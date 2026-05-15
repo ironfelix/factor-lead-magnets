@@ -79,11 +79,6 @@ body{font-family:'Raleway',sans-serif;background:#1a1a1a;min-height:100vh;displa
 .btn-primary:hover{opacity:.9;transform:translateY(-1px)}
 
 .form-legal{font-size:10px;color:#b0a89a;line-height:1.5;text-align:center}
-/* Consent checkbox */
-.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
-.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
-.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
-.consent-row a{color:#E3A96C;text-decoration:none}
 
 /* === STATES === */
 .state{display:none}
@@ -181,8 +176,8 @@ body{font-family:'Raleway',sans-serif;background:#1a1a1a;min-height:100vh;displa
             <label>Телефон</label>
             <input type="tel" name="phone" placeholder="+7 (900) 000-00-00" required>
           </div>
-          <div class="consent-row"><input type="checkbox" id="consent-ai-modal" required><label for="consent-ai-modal">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
           <button type="submit" class="btn-primary">Получить гайд →</button>
+          <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку персональных данных и получение информационных материалов</p>
         </form>
       </div>
 
