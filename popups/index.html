@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Попапы лид-магнита — Все варианты | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:linear-gradient(89deg,#E3A96C,#CC955B);
+  --blue:#453FDF;
+  --dark:#252525;
+  --muted:#676767;
+  --font:'Raleway',sans-serif;
+}
+body{font-family:var(--font);background:#111;color:#fff;min-height:100vh;padding:0}
+
+/* ─── HEADER ─── */
+.header{
+  background:#1a1a1a;border-bottom:1px solid rgba(255,255,255,.08);
+  padding:24px 40px;display:flex;align-items:center;justify-content:space-between;
+}
+.header-brand{font-size:13px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px}
+.header-brand span{color:#E3A96C}
+.header-title{font-size:16px;font-weight:800;color:#fff}
+.header-date{font-size:12px;color:rgba(255,255,255,.35)}
+
+/* ─── HERO ─── */
+.hero{padding:64px 40px 48px;max-width:900px;margin:0 auto;text-align:center}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(227,169,108,.1);border:1px solid rgba(227,169,108,.25);
+  border-radius:20px;padding:5px 14px;
+  font-size:11px;font-weight:700;color:#E3A96C;
+  letter-spacing:1px;text-transform:uppercase;margin-bottom:20px
+}
+.hero h1{font-size:clamp(28px,4vw,44px);font-weight:900;line-height:1.15;margin-bottom:14px}
+.hero h1 em{font-style:normal;background:var(--orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:15px;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto 32px;line-height:1.6}
+
+/* Lead magnet link */
+.hero-lm{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;padding:12px 20px;text-decoration:none;transition:.15s
+}
+.hero-lm:hover{background:rgba(255,255,255,.1)}
+.hero-lm-icon{font-size:20px}
+.hero-lm-text{}
+.hero-lm-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.8px;margin-bottom:2px}
+.hero-lm-name{font-size:14px;font-weight:700;color:#fff}
+
+/* ─── GRID ─── */
+.grid{max-width:1100px;margin:0 auto;padding:0 40px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+
+.card{
+  background:#1a1a1a;border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;overflow:hidden;
+  transition:border-color .2s,transform .2s;
+  text-decoration:none;
+}
+.card:hover{border-color:rgba(227,169,108,.35);transform:translateY(-3px)}
+
+.card-thumb{
+  height:160px;background:#252525;
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;border-bottom:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden
+}
+.card-thumb::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%, rgba(227,169,108,.06) 0%, transparent 70%)
+}
+.card-thumb-num{
+  position:absolute;top:12px;left:14px;
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.25);letter-spacing:.8px
+}
+
+.card-body{padding:18px 20px}
+.card-tag{
+  display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.8px;padding:3px 9px;border-radius:4px;margin-bottom:8px;
+}
+.tag-modal{background:rgba(69,63,223,.15);color:#7c78f5}
+.tag-bar{background:rgba(34,197,94,.12);color:#4ade80}
+.tag-fs{background:rgba(239,68,68,.12);color:#f87171}
+.tag-drawer{background:rgba(59,130,246,.12);color:#60a5fa}
+.tag-float{background:rgba(168,85,247,.12);color:#c084fc}
+.tag-inline{background:rgba(234,179,8,.1);color:#fbbf24}
+
+.card-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.3}
+.card-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.5;margin-bottom:14px}
+.card-trigger{
+  font-size:11px;color:rgba(255,255,255,.3);
+  padding:6px 0;border-top:1px solid rgba(255,255,255,.06)
+}
+.card-trigger strong{color:rgba(255,255,255,.5)}
+
+.card-open{
+  display:block;margin-top:12px;font-family:var(--font);font-size:13px;font-weight:700;
+  padding:9px 16px;background:rgba(255,255,255,.08);color:#fff;
+  border-radius:8px;text-align:center;text-decoration:none;
+  border:1px solid rgba(255,255,255,.1);transition:.15s
+}
+.card-open:hover{background:rgba(227,169,108,.15);border-color:rgba(227,169,108,.3);color:#E3A96C}
+
+/* States chips */
+.card-states{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.state-chip{
+  font-size:10px;font-weight:600;padding:3px 8px;border-radius:4px;
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.4)
+}
+
+/* Section divider */
+.section-label{
+  max-width:1100px;margin:0 auto 16px;padding:0 40px;
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.3);
+  text-transform:uppercase;letter-spacing:1.2px
+}
+
+@media(max-width:700px){
+  .header{padding:16px 20px}
+  .hero{padding:40px 20px 32px}
+  .grid{padding:0 20px 60px;grid-template-columns:1fr}
+  .section-label{padding:0 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-brand"><span>Фактор</span> Продаж</div>
+    <div class="header-title">Попапы лид-магнита</div>
+  </div>
+  <div class="header-date">Черновик · Май 2026</div>
+</div>
+
+<div class="hero">
+  <div class="hero-badge">6 вариантов · Все состояния</div>
+  <h1>Попапы для гайда<br>«<em>Продажи в 2026</em>»</h1>
+  <p>6 вариантов разных UX-паттернов. Каждый с интерактивными состояниями: форма → загрузка → успех → ошибка.</p>
+
+  <a href="../sales-2026-guide.html" class="hero-lm">
+    <div class="hero-lm-icon">📋</div>
+    <div class="hero-lm-text">
+      <div class="hero-lm-label">Сам лид-магнит</div>
+      <div class="hero-lm-name">Реформа ОП: Продажи в 2026 →</div>
+    </div>
+  </a>
+</div>
+
+<div class="section-label">Варианты попапов</div>
+
+<div class="grid">
+
+  <a href="popup-v1-modal.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V1</span>
+      🗔
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-modal">Модал</div>
+      <div class="card-title">Классический центральный модал</div>
+      <div class="card-desc">«Где ваш ОП теряет до 40% выручки?» Двухколоночный: тёмная левая панель с чек-листами, справа — форма (имя + email + телефон).</div>
+      <div class="card-trigger"><strong>Триггер:</strong> прокрутка 50% или кнопка</div>
+      <div class="card-states">
+        <div class="state-chip">Форма</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+        <div class="state-chip">Ошибка</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+  <a href="popup-v2-bottombar.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V2</span>
+      📌
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-bar">Нижняя панель</div>
+      <div class="card-title">Sticky bottom bar с раскрытием</div>
+      <div class="card-desc">«В 2026 выручка падает у 68%. А у вас?» Тёмная полоска внизу экрана, разворачивается в форму (имя + email + телефон). Не блокирует контент.</div>
+      <div class="card-trigger"><strong>Триггер:</strong> 20 сек на странице</div>
+      <div class="card-states">
+        <div class="state-chip">Свёрнутая</div>
+        <div class="state-chip">Форма</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+  <a href="popup-v3-fullscreen.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V3</span>
+      ⛶
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-fs">Fullscreen</div>
+      <div class="card-title">Полноэкранный exit-intent</div>
+      <div class="card-desc">«Вы уходите без чек-листа.» Весь экран, тёмный фон, 4 пункта о чек-листах, форма (имя + email + телефон). Максимальное воздействие.</div>
+      <div class="card-trigger"><strong>Триггер:</strong> мышь уходит за верхний край (exit intent)</div>
+      <div class="card-states">
+        <div class="state-chip">Форма</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+  <a href="popup-v4-drawer.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V4</span>
+      ⬡
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-drawer">Drawer</div>
+      <div class="card-title">Боковая панель справа</div>
+      <div class="card-desc">«Найдём, где теряете деньги. Бесплатно.» Диагностика ОП: 400px панель справа, список из 4 пунктов разбора, форма (имя + телефон).</div>
+      <div class="card-trigger"><strong>Триггер:</strong> кнопка «Записаться на разбор» в сайдбаре или конце статьи</div>
+      <div class="card-states">
+        <div class="state-chip">Форма</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+  <a href="popup-v5-compact.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V5</span>
+      💬
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-float">Флоат</div>
+      <div class="card-title">Компактная карточка (bottom-right)</div>
+      <div class="card-desc">«В 2026 выручка падает у 68%. А у вас?» 320px карточка в правом углу: тизер с 3 буллетами → форма (имя + email + телефон). Ненавязчивый вариант.</div>
+      <div class="card-trigger"><strong>Триггер:</strong> 15 сек на странице или прокрутка 30%</div>
+      <div class="card-states">
+        <div class="state-chip">Тизер</div>
+        <div class="state-chip">Форма</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+  <a href="popup-v6-inline.html" class="card">
+    <div class="card-thumb">
+      <span class="card-thumb-num">V6</span>
+      📄
+    </div>
+    <div class="card-body">
+      <div class="card-tag tag-inline">Inline</div>
+      <div class="card-title">Блок внутри статьи</div>
+      <div class="card-desc">«Где ваш ОП теряет до 40% выручки?» Блок в потоке статьи после 3-го H2. Статистика + чек-лист 3 пункта + форма справа (имя + email + телефон).</div>
+      <div class="card-trigger"><strong>Триггер:</strong> прокрутка до блока (нет JS)</div>
+      <div class="card-states">
+        <div class="state-chip">Открытый</div>
+        <div class="state-chip">Загрузка</div>
+        <div class="state-chip">Успех</div>
+        <div class="state-chip">Скрытый</div>
+      </div>
+      <div class="card-open">Открыть →</div>
+    </div>
+  </a>
+
+</div>
+</body>
+</html>

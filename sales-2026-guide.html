@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Продажи в 2026: как строить, что убрать, что оставить — Фактор Продаж</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #E3A96C;
+    --orange-dark: #CC955B;
+    --blue: #453FDF;
+    --blue-light: #e8e7fc;
+    --dark: #252525;
+    --text: #252525;
+    --muted: #676767;
+    --bg: #F5F5F5;
+    --warm: #ECEADF;
+    --white: #FAFAFA;
+    --border: #E0DDD5;
+    --cover-bg: #111111;
+    --font: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+    --orange-grad: linear-gradient(89deg, #E3A96C, #CC955B);
+  }
+
+  html {
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: var(--font);
+    color: var(--text);
+    background: #d8d5ce;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PAGE LAYOUT ── */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--white);
+    margin: 0 auto 8mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { margin: 0; page-break-after: always; }
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: var(--cover-bg);
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* parallelogram texture */
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      -60deg,
+      transparent,
+      transparent 18px,
+      rgba(255,255,255,0.018) 18px,
+      rgba(255,255,255,0.018) 36px
+    );
+    pointer-events: none;
+  }
+
+  .cover-header {
+    padding: 10mm 13mm 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .cover-logo-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--orange-grad);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .cover-logo-mark svg {
+    display: block;
+  }
+
+  .cover-logo-name {
+    color: #fff;
+    font-size: 12pt;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    line-height: 1.1;
+  }
+
+  .cover-logo-sub {
+    color: rgba(255,255,255,0.45);
+    font-size: 7.5pt;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  .cover-year-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.5);
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .cover-body {
+    flex: 1;
+    padding: 12mm 13mm 10mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-label {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--orange);
+    margin-bottom: 5mm;
+  }
+
+  .cover-title {
+    font-size: 34pt;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 4mm;
+    max-width: 145mm;
+  }
+
+  .cover-title em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .cover-subtitle {
+    font-size: 11.5pt;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 135mm;
+    margin-bottom: 10mm;
+    font-weight: 400;
+  }
+
+  .cover-stat-bar {
+    display: flex;
+    gap: 4mm;
+    margin-bottom: 12mm;
+    flex-wrap: wrap;
+  }
+
+  .cover-stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--orange);
+    padding: 5mm 7mm;
+    flex: 1;
+    min-width: 50mm;
+  }
+
+  .cover-stat-num {
+    font-size: 22pt;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 1.5mm;
+  }
+
+  .cover-stat-text {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+    font-weight: 400;
+  }
+
+  .cover-footer {
+    padding: 7mm 13mm 10mm;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cover-author {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .cover-author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #453FDF, var(--orange));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12pt;
+    font-weight: 800;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .cover-author-name {
+    color: #fff;
+    font-size: 9pt;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .cover-author-role {
+    color: rgba(255,255,255,0.4);
+    font-size: 7.5pt;
+    font-weight: 400;
+  }
+
+  .cover-tag-list {
+    display: flex;
+    gap: 2.5mm;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .cover-tag {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.4);
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2.5px 8px;
+    border-radius: 3px;
+  }
+
+  /* ── CONTENT PAGES ── */
+  .page-inner {
+    padding: 11mm 13mm 10mm;
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .page-num {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8mm;
+    padding-bottom: 4mm;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .page-num-brand {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--muted);
+  }
+
+  .page-num-n {
+    font-size: 7pt;
+    font-weight: 400;
+    color: var(--border);
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: var(--blue-light);
+    color: var(--blue);
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    margin-bottom: 3mm;
+  }
+
+  .section-tag.orange {
+    background: #fdf3e8;
+    color: var(--orange-dark);
+  }
+
+  .section-tag.dark {
+    background: var(--dark);
+    color: rgba(255,255,255,0.8);
+  }
+
+  .section-tag.red {
+    background: #fde8e8;
+    color: #b01010;
+  }
+
+  .section-tag.green {
+    background: #e8f5ee;
+    color: #1a7a4a;
+  }
+
+  h2.page-title {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.15;
+    letter-spacing: -0.7px;
+    margin-bottom: 5mm;
+  }
+
+  h3.section-head {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.25;
+    letter-spacing: -0.3px;
+    margin-bottom: 3mm;
+    margin-top: 5mm;
+  }
+
+  p {
+    font-size: 9.5pt;
+    line-height: 1.65;
+    color: var(--text);
+    margin-bottom: 3mm;
+    font-weight: 400;
+  }
+
+  p.lead {
+    font-size: 11pt;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--dark);
+    margin-bottom: 5mm;
+  }
+
+  strong { font-weight: 700; }
+
+  /* ── INTRO PAGE SPECIFIC ── */
+  .intro-banner {
+    background: var(--dark);
+    padding: 7mm 9mm;
+    margin-bottom: 5mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 35%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      -60deg, transparent, transparent 14px,
+      rgba(255,255,255,0.03) 14px,
+      rgba(255,255,255,0.03) 28px
+    );
+  }
+
+  .intro-banner-label {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--orange);
+    margin-bottom: 2.5mm;
+  }
+
+  .intro-banner-text {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-left: 4px solid var(--blue);
+    background: var(--blue-light);
+    padding: 5mm 6mm;
+    margin: 4mm 0;
+  }
+
+  .callout.orange {
+    border-left-color: var(--orange-dark);
+    background: #fdf3e8;
+  }
+
+  .callout.dark {
+    border-left-color: var(--orange);
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .callout.dark p { color: rgba(255,255,255,0.85); }
+
+  .callout.warm {
+    border-left-color: var(--orange-dark);
+    background: var(--warm);
+  }
+
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout-label {
+    font-size: 7pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    margin-bottom: 2mm;
+  }
+
+  .callout.orange .callout-label { color: var(--orange-dark); }
+  .callout.dark .callout-label { color: var(--orange); }
+  .callout.warm .callout-label { color: var(--orange-dark); }
+
+  /* ── STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .stat-row.two { grid-template-columns: repeat(2, 1fr); }
+
+  .stat-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 5mm 5.5mm;
+  }
+
+  .stat-card-num {
+    font-size: 22pt;
+    font-weight: 800;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+    line-height: 1;
+    margin-bottom: 1.5mm;
+  }
+
+  .stat-card-num.orange { color: var(--orange-dark); }
+  .stat-card-num.dark { color: var(--dark); }
+
+  .stat-card-text {
+    font-size: 8pt;
+    color: var(--muted);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .stat-card-source {
+    font-size: 6.5pt;
+    color: var(--border);
+    margin-top: 2mm;
+    font-weight: 400;
+  }
+
+  /* ── DEAD LIST — что не работает ── */
+  .dead-list {
+    margin: 4mm 0;
+  }
+
+  .dead-item {
+    display: flex;
+    gap: 4mm;
+    padding: 4.5mm 5mm;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .dead-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .dead-icon {
+    width: 22px;
+    height: 22px;
+    background: #fde8e8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 10pt;
+    font-weight: 800;
+    color: #b01010;
+    line-height: 1;
+  }
+
+  .dead-item-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1mm;
+    line-height: 1.3;
+  }
+
+  .dead-item-body {
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* ── BLOCKS — что работает ── */
+  .block-list {
+    margin: 4mm 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3mm;
+  }
+
+  .block-item {
+    display: flex;
+    gap: 4mm;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 5mm 5.5mm;
+    align-items: flex-start;
+  }
+
+  .block-num {
+    width: 28px;
+    height: 28px;
+    background: var(--blue);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 10pt;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .block-num.orange { background: var(--orange-grad); }
+
+  .block-item-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1.5mm;
+    line-height: 1.3;
+  }
+
+  .block-item-body {
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── DIAGNOSTIC TABLE ── */
+  .diag-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4mm 0;
+    font-size: 8.5pt;
+  }
+
+  .diag-table th {
+    background: var(--dark);
+    color: rgba(255,255,255,0.85);
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3.5mm 4mm;
+    text-align: left;
+    border: none;
+  }
+
+  .diag-table td {
+    padding: 3.5mm 4mm;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .diag-table tr:nth-child(even) td {
+    background: var(--bg);
+  }
+
+  .diag-table .signal {
+    font-weight: 700;
+    color: #b01010;
+    font-size: 8pt;
+  }
+
+  .diag-table .benchmark {
+    color: var(--muted);
+    font-size: 7.5pt;
+  }
+
+  /* ── CASE CARDS ── */
+  .case-card {
+    background: var(--dark);
+    padding: 7mm 8mm;
+    margin-bottom: 4mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .case-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 30%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      -60deg, transparent, transparent 12px,
+      rgba(255,255,255,0.025) 12px,
+      rgba(255,255,255,0.025) 24px
+    );
+  }
+
+  .case-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 4mm;
+    margin-bottom: 3.5mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .case-tag {
+    background: rgba(69,63,223,0.2);
+    border: 1px solid rgba(69,63,223,0.3);
+    color: #a5a1f5;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 2.5px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .case-result {
+    background: rgba(227,169,108,0.15);
+    border: 1px solid rgba(227,169,108,0.25);
+    color: var(--orange);
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 2.5px 8px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .case-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 2.5mm;
+    position: relative;
+    z-index: 1;
+  }
+
+  .case-body {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.55;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+
+  .case-detail {
+    margin-top: 3mm;
+    padding-top: 3mm;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 8pt;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── CTA PAGE ── */
+  .cta-page {
+    background: var(--dark);
+    min-height: 297mm;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      -60deg, transparent, transparent 18px,
+      rgba(255,255,255,0.015) 18px,
+      rgba(255,255,255,0.015) 36px
+    );
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    padding: 14mm 13mm;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .cta-top-tag {
+    display: inline-block;
+    background: rgba(227,169,108,0.15);
+    border: 1px solid rgba(227,169,108,0.3);
+    color: var(--orange);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 5mm;
+    align-self: flex-start;
+  }
+
+  .cta-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 4mm;
+    max-width: 155mm;
+  }
+
+  .cta-title em {
+    font-style: normal;
+    color: var(--orange);
+  }
+
+  .cta-subtitle {
+    font-size: 11pt;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 140mm;
+    margin-bottom: 9mm;
+    font-weight: 400;
+  }
+
+  .cta-what {
+    margin-bottom: 9mm;
+  }
+
+  .cta-what-title {
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 3.5mm;
+  }
+
+  .cta-what-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5mm;
+  }
+
+  .cta-what-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+    font-size: 9.5pt;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .cta-what-list li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--orange-grad);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .cta-btn-wrap {
+    margin-top: auto;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange-grad);
+    color: #fff;
+    font-size: 11pt;
+    font-weight: 700;
+    padding: 5mm 10mm;
+    text-decoration: none;
+    border-radius: 4px;
+    letter-spacing: -0.2px;
+    margin-bottom: 3mm;
+  }
+
+  .cta-btn-sub {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+  }
+
+  .cta-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 8mm 0;
+  }
+
+  .cta-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5mm;
+  }
+
+  .cta-footer-contact {
+    font-size: 8.5pt;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  .cta-footer-contact strong {
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+  }
+
+  .cta-proof {
+    display: flex;
+    gap: 4mm;
+    flex-wrap: wrap;
+  }
+
+  .cta-proof-item {
+    text-align: center;
+  }
+
+  .cta-proof-num {
+    font-size: 17pt;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .cta-proof-label {
+    font-size: 7pt;
+    color: rgba(255,255,255,0.35);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-top: 1mm;
+  }
+
+  /* ── NUMBERED STEPS ── */
+  .steps-list {
+    margin: 4mm 0;
+    counter-reset: steps;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 4.5mm;
+    padding: 4.5mm 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .step-item:first-child { border-top: 1px solid var(--border); }
+
+  .step-num {
+    width: 24px;
+    height: 24px;
+    background: var(--orange-grad);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 9pt;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 1px;
+  }
+
+  .step-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 1mm;
+    line-height: 1.3;
+  }
+
+  .step-body {
+    font-size: 8.5pt;
+    color: var(--muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── TWO-COL ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4mm;
+    margin: 4mm 0;
+  }
+
+  .col-block {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 5mm;
+  }
+
+  .col-block-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 3mm;
+    padding-bottom: 2.5mm;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .col-block-title.blue { border-color: var(--blue); color: var(--blue); }
+  .col-block-title.orange { border-color: var(--orange-dark); color: var(--orange-dark); }
+
+  .mini-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+
+  .mini-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5mm;
+    font-size: 8.5pt;
+    color: var(--text);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  .mini-list li::before {
+    content: '—';
+    color: var(--muted);
+    flex-shrink: 0;
+    font-weight: 600;
+  }
+
+  /* ── DIAGNOSTIC SELF-CHECK ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+    margin: 4mm 0;
+  }
+
+  .check-item {
+    display: flex;
+    gap: 3mm;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 4mm 5mm;
+    align-items: flex-start;
+  }
+
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-text {
+    font-size: 8.5pt;
+    color: var(--text);
+    line-height: 1.45;
+    font-weight: 400;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull-quote {
+    border-top: 3px solid var(--orange);
+    border-bottom: 1px solid var(--border);
+    padding: 5mm 0 4mm;
+    margin: 5mm 0;
+  }
+
+  .pull-quote-text {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.4;
+    letter-spacing: -0.3px;
+    font-style: italic;
+    margin-bottom: 2mm;
+  }
+
+  .pull-quote-attr {
+    font-size: 8pt;
+    color: var(--muted);
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  /* ── SEPARATOR ── */
+  .sep {
+    height: 1px;
+    background: var(--border);
+    margin: 5mm 0;
+  }
+
+  .sep.bold {
+    height: 2px;
+    background: var(--dark);
+    margin: 6mm 0;
+  }
+
+  /* ── ACCENT BOX ── */
+  .accent-box {
+    background: var(--blue);
+    padding: 6mm 7mm;
+    margin: 4mm 0;
+  }
+
+  .accent-box p {
+    color: rgba(255,255,255,0.9);
+    font-size: 10pt;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .accent-box p span {
+    color: var(--orange);
+  }
+
+  /* ── ORANGE BOX ── */
+  .orange-box {
+    background: var(--orange-grad);
+    padding: 6mm 7mm;
+    margin: 4mm 0;
+  }
+
+  .orange-box p {
+    color: #fff;
+    font-size: 10pt;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── SOURCE TAG ── */
+  .source {
+    font-size: 7pt;
+    color: rgba(103,103,103,0.65);
+    font-weight: 400;
+    font-style: italic;
+    margin-top: -1.5mm;
+    margin-bottom: 3mm;
+    display: block;
+  }
+
+  /* ── PAGE FOOTER ── */
+  .page-footer {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .page-footer-text {
+    font-size: 7pt;
+    color: var(--border);
+    font-weight: 400;
+  }
+
+  .page-footer-url {
+    font-size: 7.5pt;
+    color: var(--muted);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 1 — ОБЛОЖКА
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="cover">
+
+  <div class="cover-header">
+    <div class="cover-logo">
+      <div class="cover-logo-mark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3 14L9 4L15 14H3Z" fill="#fff" fill-opacity="0.9"/>
+        </svg>
+      </div>
+      <div>
+        <div class="cover-logo-name">Фактор Продаж</div>
+        <div class="cover-logo-sub">factor-prodazh.ru</div>
+      </div>
+    </div>
+    <div class="cover-year-tag">Гайд&nbsp;2026</div>
+  </div>
+
+  <div class="cover-body">
+    <div class="cover-label">Практический гайд для собственников B2B</div>
+    <h1 class="cover-title">Продажи в 2026:<br>как строить,<br>что убрать,<br><em>что оставить</em></h1>
+    <p class="cover-subtitle">ВВП в минусе. ЦБ держит 14,5%. НДС вырос до 22%.<br>
+    68,7% МСП потеряли выручку. Старые инструменты продаж больше не окупаются.<br>
+    Что делать с отделом продаж прямо сейчас — разбираем по существу.</p>
+
+    <div class="cover-stat-bar">
+      <div class="cover-stat">
+        <div class="cover-stat-num">68,7%</div>
+        <div class="cover-stat-text">МСП фиксируют падение выручки в начале 2026</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">+22%</div>
+        <div class="cover-stat-text">цикл B2B-сделки вырос за два года</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">8%</div>
+        <div class="cover-stat-text">компаний выросли через внутреннюю эффективность продаж</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-author">
+      <div class="cover-author-avatar">АК</div>
+      <div>
+        <div class="cover-author-name">Александр Кандеев</div>
+        <div class="cover-author-role">Основатель «Фактор Продаж», 200+ проектов</div>
+      </div>
+    </div>
+    <div class="cover-tag-list">
+      <span class="cover-tag">B2B</span>
+      <span class="cover-tag">Продажи</span>
+      <span class="cover-tag">ОП 2026</span>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 2 — ВВЕДЕНИЕ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">2</span>
+  </div>
+
+  <span class="section-tag dark">Введение</span>
+  <h2 class="page-title">Почему 2026 — переломный год для B2B-продаж</h2>
+
+  <div class="intro-banner">
+    <div class="intro-banner-label">Главный тезис</div>
+    <div class="intro-banner-text">
+      В 2026 году расти за счёт рекламы, денег и найма уже не получается.<br>
+      Единственный реальный источник роста — эффективность отдела продаж.
+    </div>
+  </div>
+
+  <p class="lead">Три года назад можно было нарастить лиды через Директ и закрыть дыры в продажах потоком трафика. Сегодня этот способ работает в минус.</p>
+
+  <p>ВВП России в первом квартале 2026 ушёл в минус: −0,3% по оценке Министерства экономики, −1,5% по данным ЦМАКП и ИНП РАН. Ключевая ставка ЦБ — 14,5% на май 2026. Кредиты для малого и среднего бизнеса — от 21,3%. НДС с 1 января 2025 года вырос с 20% до 22%, что прямо подняло себестоимость большинства B2B-услуг.</p>
+
+  <p>68,7% МСП зафиксировали падение выручки в начале 2026 года. Ещё 26% фиксируют стагнацию. Выросли только 8% компаний, и почти все из них — через работу с внутренней эффективностью, а не через увеличение рекламного бюджета.</p>
+  <span class="source">Данные: Опора России, март 2026; Минэк РФ, апрель 2026; ЦБ РФ, май 2026</span>
+
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-card-num">−14,9%</div>
+      <div class="stat-card-text">Кредитование МСБ сократилось в 2025 году — впервые со времён пандемии</div>
+      <div class="stat-card-source">ЦБ РФ / РБК</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num orange">51%</div>
+      <div class="stat-card-text">Доля одобрений по корпоративным кредитам — минус 17 п.п. за год</div>
+      <div class="stat-card-source">ЦБ РФ, 2025</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num dark">7×</div>
+      <div class="stat-card-text">Рост стоимости B2B-лида в России за 4 года — с 334 до 3 600 ₽</div>
+      <div class="stat-card-source">Callibri, 674 871 обращение, 2025</div>
+    </div>
+  </div>
+
+  <p>На этом фоне покупатель тоже изменился. Он не ждёт звонка от менеджера — сначала сам изучает рынок, читает отзывы, смотрит кейсы, сравнивает конкурентов. По данным 6Sense (платформа B2B-аналитики, 2025), 94% B2B-покупателей составляют список поставщиков <strong>до первого контакта с продавцом</strong>. В 95% сделок победитель уже есть в этом списке на старте переговоров.</p>
+
+  <div class="callout orange">
+    <div class="callout-label">Что это значит на практике</div>
+    <p>Средний цикл B2B-сделки вырос на 22% за два года. Средний чек упал на 15–20%: клиенты дробят бюджеты и заходят маленькими шагами. Скрипт звонка и агрессивный питчинг на первой встрече в этой логике не работают: покупатель уже принял 70% решения без вас.</p>
+  </div>
+
+  <p>Этот гайд про систему: что в вашем отделе продаж сейчас сливает деньги, что нужно перестроить и на что делать ставку в 2026 году.</p>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 3 — ЧТО НЕ РАБОТАЕТ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">3</span>
+  </div>
+
+  <span class="section-tag red">Раздел 1</span>
+  <h2 class="page-title">Что больше не работает в B2B-продажах</h2>
+
+  <p class="lead">Скрипты возражений, навязчивые повторные звонки и попытка закрыть сделку на первом звонке — эти инструменты не просто дают меньший результат. Они активно отталкивают покупателя 2026 года.</p>
+
+  <div class="dead-list">
+
+    <div class="dead-item">
+      <div class="dead-icon">✕</div>
+      <div>
+        <div class="dead-item-title">Скрипты возражений и техники дожима</div>
+        <p class="dead-item-body">73% B2B-покупателей активно избегают поставщиков, которые давят нерелевантным питчингом (Gartner, международная исследовательская компания, 2026). Стандартные ответы на «Дорого» и «Я подумаю» покупатель слышит от каждого конкурента. ChatGPT за 30 секунд выдаёт те же «5 техник закрытия сделки», которые раньше стоили денег на тренинге. Скрипт перестал быть конкурентным преимуществом.</p>
+      </div>
+    </div>
+
+    <div class="dead-item">
+      <div class="dead-icon">✕</div>
+      <div>
+        <div class="dead-item-title">Продажа одному ЛПР</div>
+        <p class="dead-item-body">Средняя B2B-сделка в 2026 году — это 6–10 человек в закупочном комитете, в крупных сделках до 16 (Forrester, исследовательская компания). Менеджер, который строит отношения только с одним контактом, проигрывает тому, кто понимает карту влияния и работает со всеми участниками решения. 74% закупочных команд показывают внутренний конфликт в процессе покупки — это не проблема, это точка входа для правильного продавца.</p>
+      </div>
+    </div>
+
+    <div class="dead-item">
+      <div class="dead-icon">✕</div>
+      <div>
+        <div class="dead-item-title">Работа только с входящим потоком</div>
+        <p class="dead-item-body">CPL (стоимость привлечения одного лида) в B2B-сегменте вырос за 4 года с 334 до 2 200–3 600 ₽ (Callibri, 2025). При этом 58% B2B-компаний вообще не отвечают на входящий лид быстро — и теряют его. Ответ через 30 минут вместо 5 снижает шанс квалифицировать лид в 21 раз (исследование MIT и Harvard Business Review, 100 000 лидов). Отдел продаж, который ждёт лидов от маркетинга и медленно их обрабатывает, — дорогое удовольствие.</p>
+      </div>
+    </div>
+
+    <div class="dead-item">
+      <div class="dead-icon">✕</div>
+      <div>
+        <div class="dead-item-title">Управление «по ощущениям» без цифр</div>
+        <p class="dead-item-body">«Кажется, продаём неплохо» — рабочая формула 2015 года. Сегодня рынок сжался, конкуренция выросла, и «неплохо» означает минус 20% к прошлому году. 80% сделок умирают между выставлением КП и подписанием договора — и большинство РОПов об этом не знают, потому что в их CRM нет этапного учёта конверсий (данные Re:call, платформа анализа звонков).</p>
+      </div>
+    </div>
+
+    <div class="dead-item">
+      <div class="dead-icon">✕</div>
+      <div>
+        <div class="dead-item-title">Найм «звёздного» менеджера как решение</div>
+        <p class="dead-item-body">На рынке труда сейчас 20 работодателей на одного B2B-продажника в Москве (Active Sales Group, рекрутинговая компания). 30% новых продавцов уходят в первые 45 дней. Замена одного менеджера стоит 150–350 тыс. ₽ с учётом вакансии, онбординга и незакрытых сделок в воронке. Если система продаж не выстроена, «звезда» сгорает за 3 месяца или уходит к конкуренту с лучшей системой.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout dark">
+    <div class="callout-label">Позиция Фактора</div>
+    <p>Мы за 200+ проектов видели одно и то же: проблема не в людях и не в скриптах. Проблема — в отсутствии системы. Менеджер без воронки, без регламента, без контроля работает на 30–40% своего потенциала вне зависимости от его «таланта к продажам».</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 4 — 5 БЛОКОВ СИСТЕМЫ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">4</span>
+  </div>
+
+  <span class="section-tag green">Раздел 2</span>
+  <h2 class="page-title">5 блоков системы продаж, которые работают в 2026</h2>
+
+  <p class="lead">Каждый из пяти блоков — это не инструмент сам по себе, а часть связанной системы. Убери один, и остальные теряют эффект.</p>
+
+  <div class="block-list">
+
+    <div class="block-item">
+      <div class="block-num">1</div>
+      <div>
+        <div class="block-item-title">Воронка с измеримыми этапами и конверсиями</div>
+        <p class="block-item-body">Не «лид → сделка», а конкретные этапы с понятными критериями перехода. Лид→квалификация→КЭВ (ключевой этап воронки, первый оплачиваемый контакт или встреча)→КП→договор. По каждому этапу — конверсия, норматив и план. Если конверсия из КЭВ в КП падает ниже 40%: проблема в продажнике. Ниже 25%: проблема в квалификации лидов. Без цифр вы не знаете, где именно теряете деньги.</p>
+      </div>
+    </div>
+
+    <div class="block-item">
+      <div class="block-num">2</div>
+      <div>
+        <div class="block-item-title">Портрет клиента и квалификация лида</div>
+        <p class="block-item-body">94% B2B-покупателей приходят с уже готовым списком поставщиков. Ваш отдел продаж тратит силы на тех, кто всё равно не купит. Чёткий ICP (идеальный профиль клиента) сокращает цикл сделки и повышает конверсию. В нашей практике переход от «все B2B» к сегментированной квалификации поднимал долю выигранных сделок на 8–12 процентных пунктов за первые 90 дней.</p>
+      </div>
+    </div>
+
+    <div class="block-item">
+      <div class="block-num">3</div>
+      <div>
+        <div class="block-item-title">КЭВ как центральный элемент воронки</div>
+        <p class="block-item-body">Ключевой этап воронки — это точка, после которой клиент принял принципиальное решение о работе с вами. Для большинства B2B-услуг это встреча-диагностика или демонстрация, а не «я вам перезвоню». Нормальная конверсия в КЭВ: 70–90% из квалифицированных лидов. Конверсия из КЭВ в сделку: 20–40%. Если у вас ниже, система теряет деньги на каждом лиде.</p>
+      </div>
+    </div>
+
+    <div class="block-item">
+      <div class="block-num">4</div>
+      <div>
+        <div class="block-item-title">Контроль качества звонков и встреч (ОКК)</div>
+        <p class="block-item-body">Отдел контроля качества — не роскошь для компаний от 10 менеджеров. Это инструмент, который окупается за 2–3 месяца. 91% менеджеров не отрабатывают «Я подумаю»: они сливают клиента, который ещё не принял решение (данные АСУ XXI ВЕК). Прослушивание 10% звонков в неделю с разбором по критериям — это 3–4 часа РОПа и +15–25% к конверсии воронки на горизонте квартала.</p>
+      </div>
+    </div>
+
+    <div class="block-item">
+      <div class="block-num orange">5</div>
+      <div>
+        <div class="block-item-title">Регулярный менеджмент через цифры, а не через ощущения</div>
+        <p class="block-item-body">Еженедельная планёрка по воронке, один-на-один с каждым менеджером раз в две недели, ежемесячный план/факт — это не бюрократия. Это единственный способ управлять продажами, а не реагировать на пожары. РОП, который не видит воронку в цифрах на этой неделе, узнаёт о проблеме через месяц — когда она уже стоит денег.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 5 — РОЛЬ AI В ПРОДАЖАХ 2026
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">5</span>
+  </div>
+
+  <span class="section-tag">Вставка 2026</span>
+  <h2 class="page-title">AI-покупатель и что с ним делать</h2>
+
+  <p class="lead">Клиент 2026 года приходит к вам уже подготовленным. Он прочитал ваш сайт, отзывы, кейсы, сравнил вас с тремя конкурентами и сформулировал вопросы через ChatGPT. Это меняет всю логику первого контакта.</p>
+
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-block-title">Клиент 2020–2022</div>
+      <ul class="mini-list">
+        <li>Приходит за информацией о продукте</li>
+        <li>Не знает конкурентов детально</li>
+        <li>Принимает решение по одному ЛПР</li>
+        <li>Реагирует на питч и «три выгоды»</li>
+        <li>Закрывается за 1–2 встречи</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-block-title orange">Клиент 2026</div>
+      <ul class="mini-list">
+        <li>70%+ пути проходит без продавца</li>
+        <li>Знает ваших конкурентов лучше менеджера</li>
+        <li>6–10 человек в закупочном комитете</li>
+        <li>Отписывается от нерелевантного питча</li>
+        <li>Цикл сделки 84–120 дней в среднем</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>70% пути покупатель проходит самостоятельно, без контакта с менеджером. Те, кто это понимают, перестают давить на первой встрече и начинают помогать клиенту принять решение.</p>
+
+  <div class="callout">
+    <div class="callout-label">Что это значит для отдела продаж</div>
+    <p>Первый контакт — это уже не презентация продукта. Это <strong>диагностика проблемы клиента</strong>. Менеджер, который на первой встрече запускает питч про «наши преимущества», конкурирует не с другими продавцами — он конкурирует с Google и ChatGPT, которые уже дали клиенту тот же питч до встречи с вами.</p>
+    <p>Выигрывает тот, кто задаёт правильные вопросы и понимает проблему клиента раньше, чем тот её объяснил.</p>
+  </div>
+
+  <h3 class="section-head">Как AI меняет работу менеджеров</h3>
+
+  <p>Salesforce State of Sales 2026 фиксирует: 70% данных о клиенте «застревают в неструктурированных источниках». Компании, которые внедрили AI-инструменты для анализа переговоров, получают:</p>
+
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">→</div>
+      <div>
+        <div class="step-title">Разбор звонков без РОПа</div>
+        <p class="step-body">AI анализирует записи разговоров и выдаёт оценку по критериям воронки — без часов прослушивания вручную. РОП видит проблему за секунды, а не через неделю разбора.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">→</div>
+      <div>
+        <div class="step-title">Подготовка к встрече за 5 минут</div>
+        <p class="step-body">Менеджер получает досье на компанию: кто ещё участвует в решении, какие задачи у компании, что говорят о конкурентах. Вместо «расскажите о себе» — «мы посмотрели ваш кейс с X и хотели уточнить».</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">→</div>
+      <div>
+        <div class="step-title">Прогноз вероятности сделки</div>
+        <p class="step-body">CRM с AI-скорингом лидов позволяет не тратить ресурсы на клиентов с вероятностью покупки 5% — и сосредоточиться на тех, у кого 60%+. В падающем рынке это прямая экономия на численности команды.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="orange-box">
+    <p>AI не заменяет менеджера. Хороший менеджер с AI закрывает больше сделок. Слабый становится виден РОПу намного раньше.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 6 — ДИАГНОСТИКА ПОТЕРЬ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">6</span>
+  </div>
+
+  <span class="section-tag orange">Раздел 3</span>
+  <h2 class="page-title">Где ваш ОП теряет деньги прямо сейчас</h2>
+
+  <p class="lead">Ответьте на 10 вопросов честно. Каждый «нет» или «не знаю» — это конкретная дыра в воронке. В среднем по нашей практике такие дыры стоят от 15 до 40% потенциальной выручки.</p>
+
+  <table class="diag-table">
+    <thead>
+      <tr>
+        <th>Вопрос</th>
+        <th>Что теряете</th>
+        <th>Норма</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Знаете конверсию на каждом этапе воронки?</td>
+        <td class="signal">Не знаете — не управляете</td>
+        <td class="benchmark">Нужно: по каждому этапу</td>
+      </tr>
+      <tr>
+        <td>Отвечаете на входящий лид за 5 минут?</td>
+        <td class="signal">−21× к конверсии при 30 мин</td>
+        <td class="benchmark">Нужно: до 5 мин, 100% лидов</td>
+      </tr>
+      <tr>
+        <td>Есть регламент работы с «Я подумаю»?</td>
+        <td class="signal">91% менеджеров его сливают</td>
+        <td class="benchmark">Нужно: 3 касания после паузы</td>
+      </tr>
+      <tr>
+        <td>Проводите КЭВ (встречу-диагностику) до КП?</td>
+        <td class="signal">КП без КЭВ — мусорный трафик</td>
+        <td class="benchmark">Нужно: КЭВ → 100% квал. лидов</td>
+      </tr>
+      <tr>
+        <td>Прослушиваете звонки менеджеров?</td>
+        <td class="signal">Ошибки копятся месяцами</td>
+        <td class="benchmark">Нужно: 10% звонков / нед.</td>
+      </tr>
+      <tr>
+        <td>Знаете причины каждого проигранного лида?</td>
+        <td class="signal">Повторяете одни ошибки</td>
+        <td class="benchmark">Нужно: учёт причин в CRM</td>
+      </tr>
+      <tr>
+        <td>Делаете повторные предложения клиентской базе?</td>
+        <td class="signal">60% базы не получает ни одного</td>
+        <td class="benchmark">Нужно: реактивация раз в квартал</td>
+      </tr>
+      <tr>
+        <td>РОП проводит 1:1 с каждым менеджером?</td>
+        <td class="signal">Проблемы выявляются поздно</td>
+        <td class="benchmark">Нужно: раз в 2 недели</td>
+      </tr>
+      <tr>
+        <td>Есть план по лидам, КЭВ и сделкам на месяц?</td>
+        <td class="signal">Нет плана — нет управления</td>
+        <td class="benchmark">Нужно: декомпозиция от выручки</td>
+      </tr>
+      <tr>
+        <td>Менеджер работает в CRM, а не в Excel?</td>
+        <td class="signal">Данные теряются, контроль — нет</td>
+        <td class="benchmark">Нужно: 100% сделок в CRM</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pull-quote">
+    <div class="pull-quote-text">«Если на 4+ вопроса ответ "нет" или "не знаю" — ваш ОП работает вполсилы. При текущей стоимости лида это не просто неэффективность, это реальные деньги, которые уходят конкурентам каждую неделю.»</div>
+    <div class="pull-quote-attr">— Александр Кандеев, основатель «Фактор Продаж»</div>
+  </div>
+
+  <p>Проблема не в том, что менеджеры ленятся или не умеют продавать. Проблема в том, что без системы даже сильный продажник работает в 40–50% от своего потенциала. Он не знает, на каком клиенте сосредоточиться, не получает обратную связь по звонкам, не понимает, почему сделка зависла.</p>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 7 — КЕЙСЫ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">7</span>
+  </div>
+
+  <span class="section-tag">Раздел 4</span>
+  <h2 class="page-title">Три кейса роста в падающем рынке</h2>
+
+  <p class="lead">Все три кейса — из нашей практики 2024–2025 годов. Общий паттерн: рост не за счёт увеличения бюджетов или штата, а за счёт системной работы с воронкой.</p>
+
+  <div class="case-card">
+    <div class="case-header">
+      <span class="case-tag">B2B SaaS · ИТ-решения</span>
+      <span class="case-result">+67% выручка за 4 мес.</span>
+    </div>
+    <div class="case-title">Из 300 лидов в месяц — до 300 квалифицированных</div>
+    <p class="case-body">Компания генерировала 300 лидов в месяц через Директ. Конверсия лид→сделка — 1,2%. Проблема оказалась не в трафике: 60% лидов не проходили квалификацию, но менеджеры всё равно вели их до КП. После внедрения квалификационного скрипта на этапе первого звонка и жёсткого критерия перехода в воронку — лидов стало 120 в месяц, но конверсия выросла до 4,8%. Итог: выручка +67% при той же стоимости лида.</p>
+    <div class="case-detail">«Грязная» деталь: первые две недели менеджеры саботировали квалификацию — не хотели терять «свои» сделки. Пришлось поменять систему мотивации под новый подход, убрав привязку к количеству лидов в воронке.</div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <span class="case-tag">Производство · Промышленное оборудование</span>
+      <span class="case-result">Цикл сделки −38 дней</span>
+    </div>
+    <div class="case-title">КЭВ вместо затяжной переписки по почте</div>
+    <p class="case-body">B2B-производитель со средним чеком 3,8 млн ₽ и циклом сделки 6+ месяцев. Менеджеры отправляли КП по email, потом догоняли звонками — и чаще всего упирались в тишину. После внедрения КЭВ в формате «технический разбор задачи клиента» (60 мин, онлайн, с техдиректором) конверсия из КЭВ в договор выросла с 18% до 41%. Средний цикл сделки сократился с 6 до 3,7 месяца. Компания закрыла тот же годовой план с командой на 2 человека меньше.</p>
+    <div class="case-detail">«Грязная» деталь: технического директора пришлось буквально убеждать два месяца — он считал встречи с «незакрытыми» клиентами тратой времени. Переломный момент — один разбор на 850 000 ₽ без единого письма с КП.</div>
+  </div>
+
+  <div class="case-card">
+    <div class="case-header">
+      <span class="case-tag">Услуги · B2B-аутсорс</span>
+      <span class="case-result">+29% выручка без новых лидов</span>
+    </div>
+    <div class="case-title">Реактивация «спящей» базы за 6 недель</div>
+    <p class="case-body">У компании скопилось 2 300 «слитых» лидов за 3 года — клиенты, которые не купили с первого раза. Менеджеры о них забыли, маркетинг их не трогал. За 6 недель системной реактивации с персонализированным предложением под текущий контекст клиента (а не шаблонным «мы вам когда-то звонили») купили 67 компаний из 2 300. При среднем чеке 420 тыс. ₽ — это 28,1 млн ₽ выручки из «мёртвой» базы.</p>
+    <div class="case-detail">«Грязная» деталь: менеджеры первые две недели звонили по скрипту «мы хотели бы вернуться к разговору» — конверсия была 0. Переломило ситуацию одно изменение: вместо попытки продать — вопрос «что изменилось в вашей задаче за этот год?»</div>
+  </div>
+
+  <p style="font-size:7.5pt; color: var(--muted); margin-top: 2mm;">Подробные кейсы с цифрами — на <strong>factor-prodazh.ru/case/</strong></p>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 8 — ЧТО МЫ ДЕЛАЕМ + ПЛАН РАБОТЫ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">8</span>
+  </div>
+
+  <span class="section-tag orange">Как работает Фактор</span>
+  <h2 class="page-title">12 недель, которые меняют отдел продаж</h2>
+
+  <p class="lead">Мы не нанимаем менеджеров и не пишем финансовую модель. Мы строим систему продаж, которая работает без нас — и даём РОПу инструменты управлять ею самостоятельно.</p>
+
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Неделя 1: диагностика текущего состояния</div>
+        <p class="step-body">Анализируем воронку, конверсии по этапам, записи звонков, CRM-данные. Находим 3–5 главных точек потерь именно в вашей системе — не по шаблону «что обычно бывает». Никаких готовых решений до диагностики.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Недели 2–5: фундамент — портрет клиента, структура ОП, воронка</div>
+        <p class="step-body">Формируем ICP — кто ваш идеальный клиент и по каким критериям его квалифицировать. Прописываем этапы воронки с критериями перехода. Определяем оргструктуру ОП: кто охотник, кто фермер, нужен ли РОП или РМО.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Недели 6–10: внедрение инструментов</div>
+        <p class="step-body">Прописываем регламенты под вашу воронку, внедряем ОКК (контроль качества звонков), запускаем КЭВ как основной инструмент квалификации. Вводим операционную отчётность — РОП получает дашборд, в котором всё видно за 10 минут в день.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div>
+        <div class="step-title">Недели 8–12: регулярный менеджмент</div>
+        <p class="step-body">Учим РОПа управлять через цифры: еженедельные планёрки, 1:1 с менеджерами, анализ причин потерь. К концу 12-й недели РОП работает самостоятельно — без нас как костыля.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep bold"></div>
+
+  <h3 class="section-head">Что входит в проект, что — нет</h3>
+
+  <div class="two-col">
+    <div class="col-block">
+      <div class="col-block-title blue">Мы делаем</div>
+      <ul class="mini-list">
+        <li>Портрет клиента (ICP) и квалификация лидов</li>
+        <li>Воронка с конверсиями и нормативами</li>
+        <li>Структура ОП — кто за что отвечает</li>
+        <li>КЭВ как центр воронки</li>
+        <li>ОКК — контроль качества звонков</li>
+        <li>Ввод в должность — онбординг новых менеджеров</li>
+        <li>Операционный отчёт РОПа</li>
+        <li>Регулярный менеджмент — планёрки, 1:1</li>
+      </ul>
+    </div>
+    <div class="col-block">
+      <div class="col-block-title" style="border-color: #b01010; color: #b01010;">Мы НЕ делаем</div>
+      <ul class="mini-list">
+        <li>Найм менеджеров по продажам</li>
+        <li>Система мотивации (оклад/бонусы/KPI)</li>
+        <li>Финансовая модель отдела продаж</li>
+        <li>Стратегия продаж компании</li>
+        <li>Маркетинг и лидогенерация</li>
+        <li>Обучение продуктовым знаниям</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout warm">
+    <div class="callout-label">Минимальный срок проекта</div>
+    <p>3 месяца (12 недель). Меньше — не строим. Система продаж не собирается за месяц: нужно время на диагностику, внедрение и первые измеримые результаты. Всё, что обещают результат за 2 недели — это обучение, не построение.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 9 — САМОПРОВЕРКА + ЧЕКЛИСТ
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="page-inner">
+
+  <div class="page-num">
+    <span class="page-num-brand">Фактор Продаж&nbsp;· Гайд 2026</span>
+    <span class="page-num-n">9</span>
+  </div>
+
+  <span class="section-tag">Чеклист</span>
+  <h2 class="page-title">Проверьте ваш ОП за 5 минут</h2>
+
+  <p class="lead">Поставьте галочку там, где у вас есть. Итог: если галочек меньше 8 из 16 — отдел продаж работает вполсилы. Меньше 5 — пора разговаривать.</p>
+
+  <div class="check-grid">
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Знаю конверсию на каждом этапе воронки этого месяца</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Менеджеры отвечают на все лиды в течение 5 минут</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Есть чёткий ICP — знаем, кого квалифицировать, кого нет</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">КЭВ (встреча/демо) проходит до отправки КП</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">РОП слушает минимум 10% звонков каждую неделю</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Фиксируем причину каждого проигранного лида в CRM</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Есть регламент на каждый этап воронки</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">РОП проводит 1:1 с каждым менеджером раз в 2 недели</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Месячный план по лидам, КЭВ и сделкам декомпозирован от цели по выручке</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Все сделки ведутся в CRM, не в Excel и не в блокнотах</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Делаем повторные предложения существующей клиентской базе</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Есть еженедельная планёрка по воронке с разбором конкретных сделок</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Новый менеджер имеет онбординг-план на первые 30 дней</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">РОП получает операционный отчёт ежедневно/еженедельно</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Знаем долю выигранных сделок из числа дошедших до КП</span>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <span class="check-text">Работаем со всеми участниками закупочного решения, не только с одним ЛПР</span>
+    </div>
+  </div>
+
+  <div class="stat-row two" style="margin-top: 5mm;">
+    <div class="stat-card">
+      <div class="stat-card-num">12–16</div>
+      <div class="stat-card-text">галочек — система есть. Разбираемся с тонкой настройкой и масштабированием.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-card-num orange">0–7</div>
+      <div class="stat-card-text">галочек — ОП работает вполсилы. Хотите понять, сколько теряете — запишитесь на диагностику.</div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж — Построение отделов продаж для B2B</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     СТРАНИЦА 10 — CTA
+══════════════════════════════════════════ -->
+<div class="page">
+<div class="cta-page">
+<div class="cta-inner">
+
+  <span class="cta-top-tag">Следующий шаг</span>
+
+  <h2 class="cta-title">Узнайте, сколько теряет<br>ваш ОП <em>прямо сейчас</em></h2>
+
+  <p class="cta-subtitle">
+    Бесплатная диагностика — это 40 минут, по итогам которых вы получаете конкретный список точек потерь в вашей воронке. Не общий отчёт «нужно улучшить продажи», а 3–5 конкретных узких мест с цифрами из вашей же статистики.
+  </p>
+
+  <div class="cta-what">
+    <div class="cta-what-title">На диагностике разбираем</div>
+    <ul class="cta-what-list">
+      <li>Конверсии по этапам вашей воронки — где именно теряются лиды</li>
+      <li>Скорость и качество обработки входящих заявок</li>
+      <li>Как работает ваш КЭВ — есть ли он вообще и как он конвертирует</li>
+      <li>Как РОП управляет командой — через цифры или через ощущения</li>
+      <li>Что сделать в первые 30 дней, чтобы закрыть самые дорогие дыры</li>
+    </ul>
+  </div>
+
+  <div class="cta-btn-wrap">
+    <a href="https://factor-prodazh.ru/services/besplatnaya-diagnostika-op/" class="cta-btn">
+      Получить бесплатную диагностику ОП →
+    </a>
+    <div class="cta-btn-sub">
+      factor-prodazh.ru/services/besplatnaya-diagnostika-op/ · Без обязательств и давления
+    </div>
+  </div>
+
+  <div class="cta-divider"></div>
+
+  <div class="cta-footer-row">
+    <div class="cta-footer-contact">
+      <strong>Фактор Продаж</strong><br>
+      Построение отделов продаж для B2B<br>
+      factor-prodazh.ru
+    </div>
+    <div class="cta-proof">
+      <div class="cta-proof-item">
+        <div class="cta-proof-num">200+</div>
+        <div class="cta-proof-label">проектов<br>в 30+ нишах</div>
+      </div>
+      <div class="cta-proof-item">
+        <div class="cta-proof-num">12</div>
+        <div class="cta-proof-label">недель<br>минимальный срок</div>
+      </div>
+      <div class="cta-proof-item">
+        <div class="cta-proof-num">2026</div>
+        <div class="cta-proof-label">работаем<br>сейчас</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+</body>
+</html>

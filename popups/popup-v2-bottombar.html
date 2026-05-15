@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V2 · Нижняя панель — Попапы лид-магнита | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:linear-gradient(89deg,#E3A96C,#CC955B);
+  --orange-solid:#E3A96C;
+  --blue:#453FDF;
+  --dark:#252525;
+  --muted:#676767;
+  --bg:#F5F5F5;
+  --font:'Raleway',sans-serif;
+}
+body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24px 120px}
+
+/* ─── FAKE PAGE CONTENT ─── */
+.fake-page{max-width:740px;margin:0 auto}
+.fake-page h1{font-size:28px;font-weight:800;color:var(--dark);margin-bottom:16px;line-height:1.3}
+.fake-page p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.fake-tag{display:inline-block;background:var(--dark);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:4px;letter-spacing:.8px;text-transform:uppercase;margin-bottom:20px}
+
+/* ─── DEMO CONTROLS ─── */
+.demo-controls{
+  text-align:center;margin-bottom:24px;
+  padding:16px;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)
+}
+.demo-controls p{font-size:12px;color:var(--muted);margin-bottom:12px}
+.demo-states{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.demo-states button{font-family:var(--font);font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer;transition:.15s}
+.demo-states button:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ─── BOTTOM BAR ─── */
+.bottom-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--dark);
+  z-index:1000;
+  transform:translateY(100%);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+.bottom-bar.show{transform:translateY(0)}
+.bottom-bar.expanded .bar-collapsed{display:none}
+.bottom-bar.expanded .bar-expanded{display:flex}
+
+/* COLLAPSED STATE */
+.bar-collapsed{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;gap:16px;
+  max-width:1200px;margin:0 auto;width:100%
+}
+.bar-collapsed-left{display:flex;align-items:center;gap:12px}
+.bar-pulse{
+  width:10px;height:10px;border-radius:50%;background:#E3A96C;flex:none;
+  animation:barpulse 1.8s ease-in-out infinite
+}
+@keyframes barpulse{0%,100%{box-shadow:0 0 0 0 rgba(227,169,108,.5)}50%{box-shadow:0 0 0 6px rgba(227,169,108,0)}}
+.bar-text{font-size:14px;font-weight:600;color:#fff}
+.bar-text span{color:#E3A96C}
+.bar-collapsed-right{display:flex;align-items:center;gap:10px}
+.bar-cta{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:9px 20px;background:var(--orange);color:#fff;
+  border:none;border-radius:7px;cursor:pointer;white-space:nowrap;
+  transition:.15s;letter-spacing:.3px
+}
+.bar-cta:hover{opacity:.9}
+.bar-dismiss{
+  background:transparent;border:none;color:rgba(255,255,255,.4);
+  font-size:20px;cursor:pointer;padding:4px;line-height:1;transition:.15s
+}
+.bar-dismiss:hover{color:rgba(255,255,255,.8)}
+
+/* EXPANDED STATE */
+.bar-expanded{
+  display:none;
+  flex-direction:column;
+  max-width:640px;margin:0 auto;width:100%;
+  padding:24px;gap:0
+}
+.bar-exp-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  margin-bottom:14px
+}
+.bar-exp-title{font-size:16px;font-weight:800;color:#fff;line-height:1.3}
+.bar-exp-sub{font-size:12px;color:rgba(255,255,255,.5);margin-top:4px}
+.bar-close{
+  background:rgba(255,255,255,.1);border:none;
+  width:28px;height:28px;border-radius:50%;cursor:pointer;
+  color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center;
+  flex:none;transition:.15s
+}
+.bar-close:hover{background:rgba(255,255,255,.2)}
+
+.bar-form{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}
+.bar-input-group{flex:1;min-width:160px;display:flex;flex-direction:column;gap:6px}
+.bar-input-group label{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px}
+.bar-input-group input{
+  font-family:var(--font);font-size:14px;
+  padding:10px 14px;border-radius:7px;border:1.5px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);color:#fff;outline:none;transition:.15s
+}
+.bar-input-group input:focus{border-color:#E3A96C;background:rgba(255,255,255,.12)}
+.bar-input-group input::placeholder{color:rgba(255,255,255,.3)}
+.bar-submit{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:11px 20px;background:var(--orange);color:#fff;
+  border:none;border-radius:7px;cursor:pointer;white-space:nowrap;transition:.15s
+}
+.bar-submit:hover{opacity:.9}
+.bar-note{font-size:11px;color:rgba(255,255,255,.35);margin-top:10px}
+
+/* STATE: LOADING */
+.bar-loading{
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:24px;gap:12px
+}
+.spinner{
+  width:32px;height:32px;border-radius:50%;
+  border:3px solid rgba(255,255,255,.15);border-top-color:#E3A96C;
+  animation:spin .7s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bar-loading p{font-size:13px;color:rgba(255,255,255,.6)}
+
+/* STATE: SUCCESS */
+.bar-success{
+  display:none;flex-direction:row;align-items:center;justify-content:space-between;
+  padding:18px 24px;gap:16px;max-width:640px;margin:0 auto;width:100%
+}
+.success-left{display:flex;align-items:center;gap:12px}
+.success-check{
+  width:36px;height:36px;border-radius:50%;flex:none;
+  background:linear-gradient(135deg,#4ade80,#22c55e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:#fff
+}
+.success-text h4{font-size:14px;font-weight:700;color:#fff;margin-bottom:2px}
+.success-text p{font-size:12px;color:rgba(255,255,255,.55)}
+.btn-diag{
+  font-family:var(--font);font-size:12px;font-weight:700;
+  padding:9px 18px;background:rgba(255,255,255,.1);color:#fff;
+  border:1px solid rgba(255,255,255,.2);border-radius:7px;
+  text-decoration:none;white-space:nowrap;transition:.15s
+}
+.btn-diag:hover{background:rgba(255,255,255,.15)}
+
+@media(max-width:580px){
+  .bar-collapsed{flex-wrap:wrap;gap:10px}
+  .bar-collapsed-right{width:100%}
+  .bar-cta{width:100%;text-align:center}
+  .bar-form{flex-direction:column}
+  .bar-submit{width:100%}
+  .bar-success{flex-direction:column;text-align:center}
+  .success-left{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="fake-page">
+  <div class="demo-controls">
+    <p><strong>V2 · Нижняя панель</strong> — Триггер: 20 сек на странице. Не блокирует контент. Идеально для блога.</p>
+    <div class="demo-states">
+      <button onclick="showBar('collapsed')">Свёрнутая</button>
+      <button onclick="showBar('expanded')">Развёрнутая (форма)</button>
+      <button onclick="showBar('loading')">Загрузка</button>
+      <button onclick="showBar('success')">Успех</button>
+      <button onclick="hideBar()">Скрыть</button>
+    </div>
+  </div>
+
+  <div class="fake-tag">Статья блога</div>
+  <h1>Почему скрипты продаж перестали работать — и что делать вместо них</h1>
+  <p>В 2026 году 68% МСП фиксируют падение выручки (Опора России, март 2026). Рынок не вернётся к 2022-му. ЦБ снизил ставку до 14,5%, но кредиты МСБ всё равно стоят 21%. Единственный рычаг роста, который остался — внутренняя эффективность отдела продаж.</p>
+  <p>Старые инструменты дают сбои: скрипты, техники закрытия, агрессивный питчинг — всё это работало в другой экономике. Покупатель 2026 года приходит на встречу, уже зная ответы на вопросы, которые раньше давали менеджеры.</p>
+  <p>Компании, которые выросли в этом году, сделали одно: перестали продавать и начали помогать клиентам принимать решения. Разберём, как это работает на практике.</p>
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar show" id="bottomBar">
+
+  <!-- collapsed -->
+  <div class="bar-collapsed" id="stCollapsed">
+    <div class="bar-collapsed-left">
+      <div class="bar-pulse"></div>
+      <div class="bar-text">В 2026 выручка падает у 68%. <span>А у вас?</span></div>
+    </div>
+    <div class="bar-collapsed-right">
+      <button class="bar-cta" onclick="showBar('expanded')">Найти потери →</button>
+      <button class="bar-dismiss" onclick="hideBar()" aria-label="Закрыть">✕</button>
+    </div>
+  </div>
+
+  <!-- expanded -->
+  <div class="bar-expanded" id="stExpanded">
+    <div class="bar-exp-header">
+      <div>
+        <div class="bar-exp-title">За 15 минут узнаете, где именно теряются деньги</div>
+        <div class="bar-exp-sub">Чек-лист скрытых потерь + экспресс-аудит ОП · практика 200+ проектов</div>
+      </div>
+      <button class="bar-close" onclick="showBar('collapsed')">✕</button>
+    </div>
+    <form class="bar-form" onsubmit="handleSubmit(event)" novalidate>
+      <div class="bar-input-group">
+        <label for="b-name">Имя</label>
+        <input type="text" id="b-name" name="name" placeholder="Алексей" required autocomplete="given-name">
+      </div>
+      <div class="bar-input-group">
+        <label for="b-email">Email</label>
+        <input type="email" id="b-email" name="email" placeholder="alex@company.ru" required autocomplete="email">
+      </div>
+      <div class="bar-input-group">
+        <label for="b-phone">Телефон</label>
+        <input type="tel" id="b-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+      </div>
+      <button type="submit" class="bar-submit">Скачать чек-листы →</button>
+    </form>
+    <div class="bar-note">Пришлём на email. Без спама и звонков без предупреждения.</div>
+  </div>
+
+  <!-- loading -->
+  <div class="bar-loading" id="stLoading">
+    <div class="spinner"></div>
+    <p>Отправляем…</p>
+  </div>
+
+  <!-- success -->
+  <div class="bar-success" id="stSuccess">
+    <div class="success-left">
+      <div class="success-check">✓</div>
+      <div class="success-text">
+        <h4>Чек-листы отправлены!</h4>
+        <p>Проверьте почту — письмо уже там</p>
+      </div>
+    </div>
+    <a href="/services/besplatnaya-diagnostika-op/" class="btn-diag">Пройти диагностику ОП →</a>
+  </div>
+</div>
+
+<script>
+function showBar(state){
+  const bar = document.getElementById('bottomBar');
+  bar.classList.add('show');
+  const ids = ['stCollapsed','stExpanded','stLoading','stSuccess'];
+  ids.forEach(id => document.getElementById(id).style.display = 'none');
+  bar.classList.remove('expanded');
+
+  if(state === 'collapsed'){
+    document.getElementById('stCollapsed').style.display = 'flex';
+  } else if(state === 'expanded'){
+    document.getElementById('stExpanded').style.display = 'flex';
+    bar.classList.add('expanded');
+  } else if(state === 'loading'){
+    document.getElementById('stLoading').style.display = 'flex';
+  } else if(state === 'success'){
+    document.getElementById('stSuccess').style.display = 'flex';
+  }
+}
+
+function hideBar(){
+  document.getElementById('bottomBar').classList.remove('show');
+}
+
+function handleSubmit(e){
+  e.preventDefault();
+  showBar('loading');
+  setTimeout(() => showBar('success'), 1800);
+}
+
+// auto show on load for demo
+window.addEventListener('load', () => showBar('collapsed'));
+</script>
+</body>
+</html>

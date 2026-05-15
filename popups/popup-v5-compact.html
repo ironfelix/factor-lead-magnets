@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V5 · Компактный флоат — Попапы | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:linear-gradient(89deg,#E3A96C,#CC955B);
+  --orange-solid:#E3A96C;
+  --blue:#453FDF;
+  --dark:#252525;
+  --muted:#676767;
+  --bg:#F5F5F5;
+  --warm:#ECEADF;
+  --border:#E8E5E0;
+  --font:'Raleway',sans-serif;
+}
+body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24px 160px}
+
+/* ─── FAKE PAGE ─── */
+.fake-page{max-width:680px;margin:0 auto}
+.demo-controls{
+  text-align:center;margin-bottom:24px;padding:16px;
+  background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.08)
+}
+.demo-controls h2{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.demo-controls p{font-size:12px;color:var(--muted);margin-bottom:12px}
+.demo-states{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.demo-states button{font-family:var(--font);font-size:12px;font-weight:600;padding:6px 14px;border-radius:6px;border:1px solid #ccc;background:#fff;cursor:pointer;transition:.15s}
+.demo-states button:hover{border-color:var(--blue);color:var(--blue)}
+
+/* ─── FLOATING CARD ─── */
+.float-card{
+  position:fixed;bottom:24px;right:24px;
+  width:320px;
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 12px 48px rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.06);
+  transform:translateY(120%) scale(.9);
+  transition:transform .4s cubic-bezier(.34,1.36,.64,1),opacity .3s;
+  opacity:0;z-index:900;
+}
+.float-card.show{transform:translateY(0) scale(1);opacity:1}
+
+/* ─── HEADER BAR ─── */
+.fc-header{
+  background:var(--dark);
+  padding:12px 14px 12px 16px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.fc-header-left{display:flex;align-items:center;gap:8px}
+.fc-dot{width:8px;height:8px;border-radius:50%;background:#E3A96C;animation:pulse 1.8s ease-in-out infinite;flex:none}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.fc-label{font-size:11px;font-weight:700;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.8px}
+.fc-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:16px;cursor:pointer;line-height:1;padding:2px;transition:.15s}
+.fc-close:hover{color:rgba(255,255,255,.8)}
+
+/* ─── BODY ─── */
+.fc-body{background:#fff;padding:16px}
+
+/* COLLAPSED STATE */
+.fc-collapsed{}
+.fc-teaser-title{font-size:14px;font-weight:800;color:var(--dark);margin-bottom:6px;line-height:1.3}
+.fc-teaser-sub{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+.fc-teaser-cta{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:10px 16px;background:var(--orange);color:#fff;
+  border:none;border-radius:8px;cursor:pointer;
+  width:100%;text-align:center;transition:.15s;
+  display:block
+}
+.fc-teaser-cta:hover{opacity:.9}
+.fc-teaser-skip{
+  display:block;text-align:center;margin-top:8px;
+  font-size:11px;color:var(--muted);cursor:pointer;background:none;border:none;
+  font-family:var(--font);transition:.15s;width:100%
+}
+.fc-teaser-skip:hover{color:var(--dark)}
+
+/* EXPANDED STATE (form) */
+.fc-expanded{display:none}
+.fc-form-title{font-size:13px;font-weight:800;color:var(--dark);margin-bottom:3px}
+.fc-form-sub{font-size:11px;color:var(--muted);margin-bottom:12px;line-height:1.4}
+.fc-input{
+  font-family:var(--font);font-size:13px;
+  width:100%;padding:9px 12px;border-radius:7px;
+  border:1.5px solid var(--border);color:var(--dark);
+  outline:none;transition:.15s;background:#fafaf8;
+  display:block;margin-bottom:8px
+}
+.fc-input:focus{border-color:var(--blue);background:#fff}
+.fc-input::placeholder{color:#bbb}
+.fc-submit{
+  font-family:var(--font);font-size:13px;font-weight:700;
+  padding:10px 16px;background:var(--orange);color:#fff;
+  border:none;border-radius:8px;cursor:pointer;
+  width:100%;text-align:center;transition:.15s
+}
+.fc-submit:hover{opacity:.9}
+.fc-note{font-size:10px;color:var(--muted);text-align:center;margin-top:6px;line-height:1.4}
+.fc-back{
+  display:inline-block;margin-top:8px;font-size:11px;
+  color:var(--muted);background:none;border:none;cursor:pointer;
+  font-family:var(--font);padding:0;transition:.15s
+}
+.fc-back:hover{color:var(--dark)}
+
+/* ─── STATE: LOADING ─── */
+.fc-loading{
+  display:none;flex-direction:column;align-items:center;gap:10px;
+  padding:20px 0;text-align:center
+}
+.spinner{width:28px;height:28px;border-radius:50%;border:3px solid #f0ede8;border-top-color:#E3A96C;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.fc-loading p{font-size:12px;color:var(--muted)}
+
+/* ─── STATE: SUCCESS ─── */
+.fc-success{display:none;flex-direction:column;align-items:center;gap:6px;padding:16px 0;text-align:center}
+.success-ring{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#4ade80,#22c55e);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;margin-bottom:6px;box-shadow:0 6px 18px rgba(34,197,94,.25)}
+.fc-success h4{font-size:14px;font-weight:800;color:var(--dark);margin-bottom:4px}
+.fc-success p{font-size:12px;color:var(--muted);line-height:1.5}
+.btn-diag-sm{
+  display:block;margin-top:10px;font-family:var(--font);font-size:12px;font-weight:700;
+  padding:9px 14px;background:var(--orange);color:#fff;
+  border-radius:7px;text-decoration:none;transition:.15s;width:100%;text-align:center
+}
+.btn-diag-sm:hover{opacity:.9}
+
+/* Bullets in teaser */
+.fc-bullets{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.fc-bullet{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:var(--muted);line-height:1.4}
+.fc-bullet-dot{width:4px;height:4px;border-radius:50%;background:#E3A96C;flex:none;margin-top:5px}
+</style>
+</head>
+<body>
+
+<div class="fake-page">
+  <div class="demo-controls">
+    <h2>V5 · Компактный флоат (bottom-right)</h2>
+    <p>Триггер: 15 сек на странице или прокрутка 30%. Ненавязчивый. Две стадии: тизер → форма.</p>
+    <div class="demo-states">
+      <button onclick="setFCState('teaser')">Тизер</button>
+      <button onclick="setFCState('form')">Форма</button>
+      <button onclick="setFCState('loading')">Загрузка</button>
+      <button onclick="setFCState('success')">Успех</button>
+      <button onclick="hideFC()">Скрыть</button>
+    </div>
+  </div>
+
+  <h1 style="font-size:26px;font-weight:800;color:#252525;margin-bottom:14px;line-height:1.3">Воронка продаж в 2026: что изменилось и как перестроить</h1>
+  <p style="font-size:15px;color:#676767;line-height:1.7;margin-bottom:14px">Покупатель 2026 года проходит 60-70% воронки до первого контакта с менеджером. К встрече он уже сравнил вас с тремя конкурентами, посмотрел отзывы и знает среднюю цену по рынку. Стандартная «выявление потребностей» → «презентация» → «работа с возражениями» больше не работает так, как в 2020-м.</p>
+  <p style="font-size:15px;color:#676767;line-height:1.7;margin-bottom:14px">Компании, которые это поняли, перестроили квалификацию. Вместо длинных вопросов в начале разговора — быстрый фильтр «наш/не наш клиент» за 5 минут. Вместо питча возможностей — совместная диагностика проблемы.</p>
+</div>
+
+<!-- FLOATING CARD -->
+<div class="float-card show" id="floatCard">
+  <div class="fc-header">
+    <div class="fc-header-left">
+      <div class="fc-dot"></div>
+      <div class="fc-label">Чек-листы · Фактор Продаж</div>
+    </div>
+    <button class="fc-close" onclick="hideFC()">✕</button>
+  </div>
+
+  <div class="fc-body">
+
+    <!-- TEASER STATE -->
+    <div id="fcTeaser">
+      <div class="fc-teaser-title">В 2026 выручка падает у 68%.<br>А у вас?</div>
+      <div class="fc-bullets">
+        <div class="fc-bullet"><div class="fc-bullet-dot"></div>Чек-лист: 7 скрытых точек утечки денег</div>
+        <div class="fc-bullet"><div class="fc-bullet-dot"></div>Экспресс-аудит ОП за 15 минут</div>
+        <div class="fc-bullet"><div class="fc-bullet-dot"></div>Конкретный план на 30 дней</div>
+      </div>
+      <button class="fc-teaser-cta" onclick="setFCState('form')">Найти потери →</button>
+      <button class="fc-teaser-skip" onclick="hideFC()">Нет, не интересно</button>
+    </div>
+
+    <!-- FORM STATE -->
+    <div class="fc-expanded" id="fcForm">
+      <div class="fc-form-title">Скачать чек-листы</div>
+      <div class="fc-form-sub">Пришлём на email — откроете сразу</div>
+      <form onsubmit="handleFCSubmit(event)" novalidate>
+        <input class="fc-input" type="text" name="name" placeholder="Ваше имя" required autocomplete="given-name">
+        <input class="fc-input" type="email" name="email" placeholder="email@company.ru" required autocomplete="email">
+        <input class="fc-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+        <button class="fc-submit" type="submit">Скачать →</button>
+        <div class="fc-note">Без спама и звонков без предупреждения.</div>
+      </form>
+      <button class="fc-back" onclick="setFCState('teaser')">← Назад</button>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div class="fc-loading" id="fcLoading">
+      <div class="spinner"></div>
+      <p>Отправляем…</p>
+    </div>
+
+    <!-- SUCCESS STATE -->
+    <div class="fc-success" id="fcSuccess">
+      <div class="success-ring">✓</div>
+      <h4>Чек-листы отправлены!</h4>
+      <p>Проверьте почту —<br>письмо уже там.</p>
+      <a href="/services/besplatnaya-diagnostika-op/" class="btn-diag-sm">Пройти диагностику ОП →</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function setFCState(s){
+  const card = document.getElementById('floatCard');
+  card.classList.add('show');
+
+  document.getElementById('fcTeaser').style.display = 'none';
+  document.getElementById('fcForm').style.display = 'none';
+  document.getElementById('fcLoading').style.display = 'none';
+  document.getElementById('fcSuccess').style.display = 'none';
+
+  if(s === 'teaser') document.getElementById('fcTeaser').style.display = 'block';
+  else if(s === 'form') document.getElementById('fcForm').style.display = 'block';
+  else if(s === 'loading') document.getElementById('fcLoading').style.display = 'flex';
+  else if(s === 'success') document.getElementById('fcSuccess').style.display = 'flex';
+}
+function hideFC(){
+  document.getElementById('floatCard').classList.remove('show');
+}
+function handleFCSubmit(e){
+  e.preventDefault();
+  setFCState('loading');
+  setTimeout(() => setFCState('success'), 1800);
+}
+
+// Auto-show after 15 sec (production)
+setTimeout(() => {
+  if(!document.getElementById('floatCard').classList.contains('show'))
+    setFCState('teaser');
+}, 15000);
+</script>
+</body>
+</html>
