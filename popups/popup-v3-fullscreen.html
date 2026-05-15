@@ -216,6 +216,12 @@ body{font-family:var(--font);background:#e8e6df;min-height:100vh;display:flex;fl
   .fs-stat:last-child{border-bottom:none}
   .fs-inside{grid-template-columns:1fr}
 }
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:rgba(255,255,255,.3);line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -269,7 +275,8 @@ body{font-family:var(--font);background:#e8e6df;min-height:100vh;display:flex;fl
         <input class="fs-input" type="text" name="name" placeholder="Ваше имя" required autocomplete="given-name">
         <input class="fs-input" type="email" name="email" placeholder="email@company.ru" required autocomplete="email">
         <input class="fs-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
-        <button class="fs-submit" type="submit">Скачать чек-листы бесплатно →</button>
+<div class="consent-row"><input type="checkbox" id="consent-popup_v3_fullscreen" required><label for="consent-popup_v3_fullscreen">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+                <button class="fs-submit" type="submit">Скачать чек-листы бесплатно →</button>
         <div class="fs-note">Пришлём на email. Без спама и звонков без предупреждения.</div>
       </form>
 

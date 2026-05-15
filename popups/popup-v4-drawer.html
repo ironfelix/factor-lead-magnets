@@ -174,6 +174,12 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh}
   border-radius:8px;text-decoration:none;transition:.15s;width:100%;text-align:center
 }
 .btn-diag:hover{opacity:.9}
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -247,7 +253,8 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh}
           <label for="d-phone">Телефон</label>
           <input type="tel" id="d-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
         </div>
-        <button type="submit" class="btn-cta">Записаться на разбор →</button>
+<div class="consent-row"><input type="checkbox" id="consent-popup_v4_drawer" required><label for="consent-popup_v4_drawer">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+                <button type="submit" class="btn-cta">Записаться на разбор →</button>
         <div class="form-note">Позвоним, чтобы договориться о времени. Без навязывания.</div>
       </form>
 

@@ -155,6 +155,12 @@ body{font-family:var(--font);background:#f0ede8;padding:24px}
   .ib-success{flex-wrap:wrap}
   .btn-diag-inline{margin-left:0;width:100%;text-align:center}
 }
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -233,7 +239,8 @@ body{font-family:var(--font);background:#f0ede8;padding:24px}
                   <input class="ib-input" type="text" name="name" placeholder="Ваше имя" required autocomplete="given-name">
                   <input class="ib-input" type="email" name="email" placeholder="email@company.ru" required autocomplete="email">
                   <input class="ib-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
-                  <button class="ib-submit" type="submit">Скачать чек-листы →</button>
+<div class="consent-row"><input type="checkbox" id="consent-popup_v6_inline" required><label for="consent-popup_v6_inline">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+                          <button class="ib-submit" type="submit">Скачать чек-листы →</button>
                   <div class="ib-note">Пришлём на email. Без спама.</div>
                 </form>
               </div>

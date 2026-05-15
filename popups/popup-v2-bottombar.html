@@ -157,6 +157,12 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24
   .bar-success{flex-direction:column;text-align:center}
   .success-left{justify-content:center}
 }
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -217,7 +223,8 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24
         <label for="b-phone">Телефон</label>
         <input type="tel" id="b-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
       </div>
-      <button type="submit" class="bar-submit">Скачать чек-листы →</button>
+<div class="consent-row"><input type="checkbox" id="consent-popup_v2_bottombar" required><label for="consent-popup_v2_bottombar">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+              <button type="submit" class="bar-submit">Скачать чек-листы →</button>
     </form>
     <div class="bar-note">Пришлём на email. Без спама и звонков без предупреждения.</div>
   </div>

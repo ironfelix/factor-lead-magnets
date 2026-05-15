@@ -212,6 +212,12 @@ body{font-family:var(--font);background:#1a1a18;color:#fff;min-height:100vh}
   .rf-grid{grid-template-columns:1fr}
   .quiz-q{font-size:16px}
 }
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -367,7 +373,8 @@ body{font-family:var(--font);background:#1a1a18;color:#fff;min-height:100vh}
         <input class="rf-input" type="tel" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
       </div>
       <input class="rf-input" type="email" name="email" placeholder="Email" required autocomplete="email">
-      <button type="submit" class="btn-results-cta">Получить разбор бесплатно →</button>
+<div class="consent-row"><input type="checkbox" id="consent-popup_v8_quiz" required><label for="consent-popup_v8_quiz">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+              <button type="submit" class="btn-results-cta">Получить разбор бесплатно →</button>
       <div class="results-note">Позвоним, чтобы договориться о времени. Без навязывания.</div>
     </form>
   </div>

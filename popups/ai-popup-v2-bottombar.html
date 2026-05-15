@@ -117,6 +117,12 @@ body{font-family:'Raleway',sans-serif;background:#f0ede6;min-height:100vh;displa
 .demo-btn.p{background:linear-gradient(89deg,#E3A96C,#CC955B);color:#fff}
 .demo-btn.s{background:rgba(255,255,255,.1);color:#fff}
 .demo-btn:hover{opacity:.85}
+
+/* Consent checkbox */
+.consent-row{display:flex;align-items:flex-start;gap:8px;margin-top:4px}
+.consent-row input[type=checkbox]{flex-shrink:0;margin-top:2px;accent-color:#E3A96C;width:14px;height:14px;cursor:pointer}
+.consent-row label{font-size:10px;color:#b0a89a;line-height:1.4;cursor:pointer}
+.consent-row a{color:#E3A96C;text-decoration:none}
 </style>
 </head>
 <body>
@@ -175,7 +181,8 @@ body{font-family:'Raleway',sans-serif;background:#f0ede6;min-height:100vh;displa
             <label>Телефон</label>
             <input type="tel" placeholder="+7 (900) 000-00-00">
           </div>
-          <button class="bb-submit" onclick="handleSubmit()">Получить гайд →</button>
+<div class="consent-row"><input type="checkbox" id="consent-ai_popup_v2_bottombar" required><label for="consent-ai_popup_v2_bottombar">Соглашаюсь на обработку персональных данных согласно <a href="https://factor-prodazh.ru/privacy-policy/" target="_blank">152-ФЗ</a></label></div>
+                  <button class="bb-submit" onclick="handleSubmit()">Получить гайд →</button>
         </div>
       </div>
 
