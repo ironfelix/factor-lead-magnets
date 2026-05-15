@@ -12,8 +12,9 @@ body{font-family:'Raleway',sans-serif;background:#111;color:#fff;min-height:100v
 .wrap{max-width:800px;width:100%;margin:0 auto}
 
 /* Header */
-.brand{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:40px}
-.brand span{color:#E3A96C}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+.brand img{height:28px;width:auto;opacity:.85;filter:brightness(0) invert(1)}
+.brand-sub{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px}
 
 /* Section */
 .section{margin-bottom:60px}
@@ -62,7 +63,10 @@ body{font-family:'Raleway',sans-serif;background:#111;color:#fff;min-height:100v
 <body>
 <div class="wrap">
 
-  <div class="brand"><span>Фактор</span> Продаж · Витрина материалов · Май 2026</div>
+  <div class="brand">
+    <img src="https://factor-prodazh.ru/wp-content/themes/faktor-template/common/image/logo-dec.svg" alt="Фактор Продаж">
+    <span class="brand-sub">Витрина материалов · Май 2026</span>
+  </div>
 
   <!-- ===== LEAD MAGNET 1 ===== -->
   <div class="section">
