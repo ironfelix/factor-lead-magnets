@@ -273,6 +273,17 @@ strong{font-weight:700;color:#252525}
 }
 
 @page{size:A4;margin:0}
+
+/* Fix: strong inside dark containers must be white */
+.lead-stat strong,.lead-stat-text strong,
+.cover strong,
+.cta-page strong,
+.ru-block strong,
+.stat-card.dark strong,
+.modal-left strong,
+.bb-collapsed strong,
+.bottombar strong,
+.result-screen strong{color:inherit}
 </style>
 </head>
 <body>
