@@ -175,6 +175,14 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh}
 }
 .btn-diag:hover{opacity:.9}
 
+
+@media(max-width:480px){
+  .drawer{width:100%;max-width:100%;border-radius:16px 16px 0 0;bottom:0;top:auto;right:0;transform:translateY(100%)}
+  .drawer.open{transform:translateY(0)}
+  .drawer-stat-row{grid-template-columns:1fr 1fr}
+  .drawer-body{padding:20px 16px 32px}
+  .drawer-header{padding:16px 16px 0}
+}
 </style>
 </head>
 <body>

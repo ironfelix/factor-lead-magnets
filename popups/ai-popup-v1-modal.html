@@ -119,6 +119,12 @@ body{font-family:'Raleway',sans-serif;background:#1a1a1a;min-height:100vh;displa
 
 /* Fix: strong in dark containers */
 .modal-left strong,.ml-stat-sub strong,.ml-bullets strong,.ml-inner strong{color:inherit}
+
+@media(max-width:600px){
+  .modal{grid-template-columns:1fr;max-width:96vw;max-height:92vh;overflow-y:auto}
+  .modal-left{display:none}
+  .modal-right{padding:28px 20px}
+}
 </style>
 </head>
 <body>

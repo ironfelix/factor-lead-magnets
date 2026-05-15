@@ -148,13 +148,16 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24
 }
 .btn-diag:hover{background:rgba(255,255,255,.15)}
 
-@media(max-width:580px){
-  .bar-collapsed{flex-wrap:wrap;gap:10px}
+@media(max-width:600px){
+  .bar-collapsed{flex-wrap:wrap;gap:8px;padding:12px 16px}
   .bar-collapsed-right{width:100%}
   .bar-cta{width:100%;text-align:center}
-  .bar-form{flex-direction:column}
+  .bar-title{font-size:13px}
+  .bar-sub{font-size:11px}
+  .bar-form{flex-direction:column;gap:8px}
   .bar-submit{width:100%}
-  .bar-success{flex-direction:column;text-align:center}
+  .bar-expanded{padding:16px}
+  .bar-success{flex-direction:column;text-align:center;gap:12px}
   .success-left{justify-content:center}
 }
 

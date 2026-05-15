@@ -208,9 +208,15 @@ body{font-family:var(--font);background:#1a1a18;color:#fff;min-height:100vh}
 }
 .btn-diag:hover{opacity:.9}
 
-@media(max-width:480px){
+@media(max-width:600px){
+  .overlay{padding:0;align-items:flex-end}
+  .quiz{max-width:100%;border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto}
+  .quiz-body{padding:16px 16px 24px}
+  .quiz-header{padding:16px 16px 0}
+  .quiz-q{font-size:15px}
+  .quiz-opt{padding:10px 14px;font-size:13px}
   .rf-grid{grid-template-columns:1fr}
-  .quiz-q{font-size:16px}
+  .results-title{font-size:17px}
 }
 
 </style>

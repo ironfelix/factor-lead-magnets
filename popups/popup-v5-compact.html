@@ -133,6 +133,11 @@ body{font-family:var(--font);background:#f0ede8;min-height:100vh;padding:24px 24
 .fc-bullet{display:flex;align-items:flex-start;gap:7px;font-size:11px;color:var(--muted);line-height:1.4}
 .fc-bullet-dot{width:4px;height:4px;border-radius:50%;background:#E3A96C;flex:none;margin-top:5px}
 
+
+@media(max-width:480px){
+  .float-card{bottom:0;right:0;left:0;width:100%;border-radius:16px 16px 0 0;transform:translateY(120%) scale(1)}
+  .float-card.show{transform:translateY(0) scale(1)}
+}
 </style>
 </head>
 <body>

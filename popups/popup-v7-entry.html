@@ -232,10 +232,17 @@ body{font-family:var(--font);background:#1a1a18;color:#fff;min-height:100vh}
 
 @media(max-width:760px){
   .overlay{flex-direction:column}
-  .ep-left{flex:0 0 auto;padding:40px 28px}
-  .ep-right{padding:36px 28px}
+  .ep-left{flex:0 0 auto;padding:24px 20px}
+  .ep-right{padding:28px 20px}
   .ep-stats{flex-wrap:wrap}
-  .ep-h1{font-size:28px}
+  .ep-h1{font-size:24px}
+  .ep-bullets{display:none}
+  .ep-stat{flex:1 1 40%}
+}
+@media(max-width:480px){
+  .ep-left{display:none}
+  .ep-right{padding:32px 20px}
+  .overlay{overflow-y:auto}
 }
 
 </style>

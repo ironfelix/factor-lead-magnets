@@ -135,6 +135,16 @@ body{font-family:'Raleway',sans-serif;background:#1a1a1a;min-height:100vh;displa
 .state{display:none}
 .state.active{display:block}
 
+
+@media(max-width:600px){
+  .quiz-overlay{padding:0;align-items:flex-end}
+  .quiz-card{max-width:100%;border-radius:20px 20px 0 0;max-height:90vh;overflow-y:auto}
+  .quiz-body{padding:16px 16px 24px}
+  .quiz-question{font-size:15px}
+  .result-inputs{flex-direction:column}
+  .result-inputs input{width:100%}
+  .result-submit{width:100%}
+}
 </style>
 </head>
 <body>

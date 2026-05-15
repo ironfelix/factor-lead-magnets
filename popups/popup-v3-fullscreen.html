@@ -210,11 +210,14 @@ body{font-family:var(--font);background:#e8e6df;min-height:100vh;display:flex;fl
 .btn-close-fs:hover{color:rgba(255,255,255,.6)}
 
 @media(max-width:600px){
-  .fs-inner{padding:48px 20px}
-  .fs-stats{flex-direction:column}
-  .fs-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
-  .fs-stat:last-child{border-bottom:none}
+  .fs-overlay{padding:0}
+  .fs-inner{padding:56px 16px 24px}
+  .fs-stats{flex-direction:row;flex-wrap:wrap}
+  .fs-stat{flex:1 1 45%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .fs-h1{font-size:clamp(22px,6vw,32px)}
+  .fs-sub{font-size:12px;margin-bottom:16px}
   .fs-inside{grid-template-columns:1fr}
+  .fs-skip{margin-top:8px}
 }
 
 </style>
