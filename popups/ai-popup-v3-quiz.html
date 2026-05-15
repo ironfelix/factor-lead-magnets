@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-покупатель 2026 — Квиз</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Raleway',sans-serif;background:#1a1a1a;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;z-index:100}
+
+/* === QUIZ MODAL === */
+.quiz{
+  background:#fff;border-radius:20px;overflow:hidden;
+  width:100%;max-width:560px;box-shadow:0 32px 80px rgba(0,0,0,.5);
+  position:relative;
+}
+.quiz-close{
+  position:absolute;top:14px;right:14px;
+  width:32px;height:32px;background:rgba(0,0,0,.06);
+  border:none;border-radius:50%;cursor:pointer;
+  font-size:16px;z-index:10;transition:.2s;
+}
+.quiz-close:hover{background:rgba(0,0,0,.12)}
+
+/* === HEADER === */
+.quiz-header{
+  background:linear-gradient(135deg,#111,#0d0d0d);
+  padding:28px 32px 24px;color:#fff;position:relative;overflow:hidden;
+}
+.quiz-header::before{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(-55deg,transparent,transparent 22px,rgba(255,255,255,.02) 22px,rgba(255,255,255,.02) 24px);
+}
+.qh-inner{position:relative;z-index:1}
+.qh-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E3A96C;margin-bottom:8px}
+.qh-title{font-size:18px;font-weight:800;line-height:1.3}
+
+/* progress */
+.quiz-progress{padding:0 32px;background:#f7f5f1;border-bottom:1px solid #ede9e2}
+.progress-bar{height:3px;background:#ede9e2;margin-bottom:12px;border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(89deg,#E3A96C,#CC955B);transition:.4s;border-radius:2px}
+.progress-text{font-size:10px;color:#b0a89a;padding-bottom:10px}
+
+/* === BODY === */
+.quiz-body{padding:28px 32px}
+
+/* Question */
+.q-screen{}
+.q-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E3A96C;margin-bottom:10px}
+.q-text{font-size:16px;font-weight:700;color:#111;margin-bottom:20px;line-height:1.4}
+.q-options{display:flex;flex-direction:column;gap:10px}
+.q-option{
+  padding:13px 16px;border:1.5px solid #e0dbd4;border-radius:10px;
+  cursor:pointer;font-size:13px;color:#3a3530;transition:.2s;
+  background:#faf8f5;font-family:'Raleway',sans-serif;text-align:left;
+  display:flex;align-items:center;gap:10px;
+}
+.q-option:hover{border-color:#E3A96C;background:#fff}
+.q-option.selected{border-color:#E3A96C;background:#fdf6ed}
+.q-opt-icon{
+  width:28px;height:28px;border-radius:50%;border:2px solid #e0dbd4;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+  flex-shrink:0;transition:.2s;color:#b0a89a;
+}
+.q-option.selected .q-opt-icon{background:#E3A96C;border-color:#E3A96C;color:#fff}
+
+.q-nav{display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.q-nav-back{
+  padding:9px 18px;border:1.5px solid #e0dbd4;border-radius:8px;
+  background:none;cursor:pointer;font-family:'Raleway',sans-serif;font-size:12px;
+  color:#676767;transition:.2s;
+}
+.q-nav-back:hover{border-color:#E3A96C;color:#E3A96C}
+.q-nav-next{
+  padding:9px 20px;background:linear-gradient(89deg,#E3A96C,#CC955B);
+  border:none;border-radius:8px;color:#fff;font-family:'Raleway',sans-serif;
+  font-size:12px;font-weight:700;cursor:pointer;transition:.2s;
+}
+.q-nav-next:disabled{opacity:.4;cursor:not-allowed}
+.q-nav-next:not(:disabled):hover{opacity:.9}
+
+/* Results */
+.result-screen{}
+.result-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E3A96C;margin-bottom:10px}
+.result-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:20px;margin-bottom:16px;
+  font-size:12px;font-weight:700;
+}
+.result-badge.red{background:#fef2f2;color:#e84c3d}
+.result-badge.yellow{background:#fffbea;color:#d4910a}
+.result-badge.green{background:#f0faf0;color:#27ae60}
+
+.result-title{font-size:18px;font-weight:800;color:#111;margin-bottom:10px;line-height:1.3}
+.result-text{font-size:13px;color:#676767;line-height:1.6;margin-bottom:20px}
+.result-points{list-style:none;margin-bottom:20px}
+.result-points li{
+  font-size:12px;color:#3a3530;padding:7px 0;
+  border-bottom:1px solid #f0ede6;display:flex;gap:8px;
+}
+.result-points li::before{content:'→';color:#E3A96C;flex-shrink:0}
+.result-points li:last-child{border-bottom:none}
+
+/* Form in result */
+.result-form-label{font-size:11px;font-weight:600;color:#444;margin-bottom:6px}
+.result-inputs{display:flex;gap:8px;margin-bottom:10px}
+.result-inputs input{
+  flex:1;border:1.5px solid #e0dbd4;border-radius:8px;
+  padding:10px 12px;font-family:'Raleway',sans-serif;font-size:12px;
+  color:#252525;outline:none;background:#faf8f5;
+}
+.result-inputs input:focus{border-color:#E3A96C;background:#fff}
+.result-inputs input::placeholder{color:#b0a89a}
+.result-submit{
+  width:100%;padding:12px;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  border:none;border-radius:8px;color:#fff;font-family:'Raleway',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;
+}
+
+/* Loading / Success states */
+.loading-wrap{text-align:center;padding:24px 0;display:flex;align-items:center;justify-content:center;gap:12px;color:#676767;font-size:13px}
+.spinner{width:24px;height:24px;border:2px solid #f0ede6;border-top-color:#E3A96C;border-radius:50%;animation:spin 1s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.success-wrap{text-align:center;padding:8px 0}
+.success-icon{width:52px;height:52px;background:linear-gradient(135deg,#E3A96C,#CC955B);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px}
+.success-title{font-size:17px;font-weight:800;color:#111;margin-bottom:8px}
+.success-sub{font-size:12px;color:#676767;line-height:1.55;margin-bottom:12px}
+.success-link{display:inline-block;padding:10px 20px;background:linear-gradient(89deg,#E3A96C,#CC955B);border-radius:8px;color:#fff;text-decoration:none;font-size:12px;font-weight:700}
+
+.state{display:none}
+.state.active{display:block}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay">
+  <div class="quiz">
+    <button class="quiz-close" onclick="document.getElementById('overlay').style.display='none'">✕</button>
+
+    <!-- HEADER -->
+    <div class="quiz-header">
+      <div class="qh-inner">
+        <div class="qh-eyebrow">Фактор Продаж · 4 вопроса · 2 минуты</div>
+        <div class="qh-title">Готов ли ваш ОП к AI-покупателю?</div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="quiz-progress" id="quiz-progress">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:25%"></div></div>
+      <div class="progress-text" id="progress-text">Вопрос 1 из 4</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="quiz-body">
+
+      <!-- Q1 -->
+      <div class="q-screen" id="q1">
+        <div class="q-label">Вопрос 1</div>
+        <div class="q-text">Проверяет ли кто-то из вашей команды, что ChatGPT говорит о вашей компании при запросе «лучшие подрядчики по [вашей нише]»?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="selectAnswer('q1', 'a', this)">
+            <div class="q-opt-icon">A</div>
+            Да, мониторим регулярно
+          </button>
+          <button class="q-option" onclick="selectAnswer('q1', 'b', this)">
+            <div class="q-opt-icon">B</div>
+            Проверяли пару раз, систематически — нет
+          </button>
+          <button class="q-option" onclick="selectAnswer('q1', 'c', this)">
+            <div class="q-opt-icon">C</div>
+            Никогда не проверяли
+          </button>
+        </div>
+        <div class="q-nav">
+          <div></div>
+          <button class="q-nav-next" id="q1-next" onclick="nextQ(1)" disabled>Далее →</button>
+        </div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="q-screen" id="q2" style="display:none">
+        <div class="q-label">Вопрос 2</div>
+        <div class="q-text">Есть ли у вас скрипт реакции на фразу клиента: «Мне нужно прогнать ваш оффер через мой AI»?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="selectAnswer('q2', 'a', this)">
+            <div class="q-opt-icon">A</div>
+            Да, есть чёткий регламент с конкретным следующим шагом
+          </button>
+          <button class="q-option" onclick="selectAnswer('q2', 'b', this)">
+            <div class="q-opt-icon">B</div>
+            Менеджеры справляются сами, по-разному
+          </button>
+          <button class="q-option" onclick="selectAnswer('q2', 'c', this)">
+            <div class="q-opt-icon">C</div>
+            Такого ещё не встречали, но не знаем что ответить
+          </button>
+        </div>
+        <div class="q-nav">
+          <button class="q-nav-back" onclick="prevQ(2)">← Назад</button>
+          <button class="q-nav-next" id="q2-next" onclick="nextQ(2)" disabled>Далее →</button>
+        </div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="q-screen" id="q3" style="display:none">
+        <div class="q-label">Вопрос 3</div>
+        <div class="q-text">Использует ли ваша команда речевую аналитику на звонках (Rechka.ai, SalesAI, Calltouch Predict или аналог)?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="selectAnswer('q3', 'a', this)">
+            <div class="q-opt-icon">A</div>
+            Да, на 100% звонков, анализируем регулярно
+          </button>
+          <button class="q-option" onclick="selectAnswer('q3', 'b', this)">
+            <div class="q-opt-icon">B</div>
+            Слушаем вручную выборочно, без системы
+          </button>
+          <button class="q-option" onclick="selectAnswer('q3', 'c', this)">
+            <div class="q-opt-icon">C</div>
+            Не записываем / не анализируем звонки
+          </button>
+        </div>
+        <div class="q-nav">
+          <button class="q-nav-back" onclick="prevQ(3)">← Назад</button>
+          <button class="q-nav-next" id="q3-next" onclick="nextQ(3)" disabled>Далее →</button>
+        </div>
+      </div>
+
+      <!-- Q4 -->
+      <div class="q-screen" id="q4" style="display:none">
+        <div class="q-label">Вопрос 4</div>
+        <div class="q-text">Когда клиент присылает несколько КП конкурентов на сравнение — ваши менеджеры знают, что у вас лучше по каждому параметру таблицы?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="selectAnswer('q4', 'a', this)">
+            <div class="q-opt-icon">A</div>
+            Да, есть готовые ответы на сравнение с конкурентами
+          </button>
+          <button class="q-option" onclick="selectAnswer('q4', 'b', this)">
+            <div class="q-opt-icon">B</div>
+            По основным пунктам знают, по деталям — нет
+          </button>
+          <button class="q-option" onclick="selectAnswer('q4', 'c', this)">
+            <div class="q-opt-icon">C</div>
+            Теряются, отвечают долго или уходят от сравнения
+          </button>
+        </div>
+        <div class="q-nav">
+          <button class="q-nav-back" onclick="prevQ(4)">← Назад</button>
+          <button class="q-nav-next" id="q4-next" onclick="showResult()" disabled>Посмотреть результат →</button>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="q-screen" id="result-screen" style="display:none">
+
+        <div class="state active" id="state-result">
+          <div class="result-label">Ваш результат</div>
+          <div class="result-badge" id="result-badge"></div>
+          <div class="result-title" id="result-title"></div>
+          <div class="result-text" id="result-text"></div>
+          <ul class="result-points" id="result-points"></ul>
+
+          <div class="result-form-label">Получить полный гайд «AI-покупатель B2B 2026»:</div>
+          <div class="result-inputs">
+            <input type="text" placeholder="Имя">
+            <input type="email" placeholder="Email">
+          </div>
+          <button class="result-submit" onclick="handleFormSubmit()">Получить гайд и план действий →</button>
+        </div>
+
+        <div class="state" id="state-loading">
+          <div class="loading-wrap">
+            <div class="spinner"></div>
+            Готовим ваш персональный план…
+          </div>
+        </div>
+
+        <div class="state" id="state-success">
+          <div class="success-wrap">
+            <div class="success-icon">✓</div>
+            <div class="success-title">Отправили на почту!</div>
+            <div class="success-sub">Внутри: полный гайд AI-покупатель 2026 + план действий для вашей ситуации. Если хотите разобрать конкретно — запишитесь на диагностику.</div>
+            <a href="../ai-buyer-2026-guide.html" class="success-link" target="_blank">Открыть гайд сразу →</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+const answers = {};
+
+function selectAnswer(q, val, btn) {
+  // reset others
+  btn.closest('.q-options').querySelectorAll('.q-option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  answers[q] = val;
+  document.getElementById(q + '-next').disabled = false;
+}
+
+function nextQ(current) {
+  document.getElementById('q' + current).style.display = 'none';
+  document.getElementById('q' + (current + 1)).style.display = 'block';
+  updateProgress(current + 1);
+}
+
+function prevQ(current) {
+  document.getElementById('q' + current).style.display = 'none';
+  document.getElementById('q' + (current - 1)).style.display = 'block';
+  updateProgress(current - 1);
+}
+
+function updateProgress(q) {
+  document.getElementById('progress-fill').style.width = (q * 25) + '%';
+  document.getElementById('progress-text').textContent = 'Вопрос ' + q + ' из 4';
+}
+
+function showResult() {
+  document.getElementById('q4').style.display = 'none';
+  document.getElementById('quiz-progress').style.display = 'none';
+  document.getElementById('result-screen').style.display = 'block';
+
+  // score: a=2, b=1, c=0
+  let score = 0;
+  Object.values(answers).forEach(a => { if(a==='a') score+=2; else if(a==='b') score+=1; });
+
+  const badge = document.getElementById('result-badge');
+  const title = document.getElementById('result-title');
+  const text = document.getElementById('result-text');
+  const points = document.getElementById('result-points');
+
+  if (score >= 6) {
+    badge.className = 'result-badge green';
+    badge.textContent = '✓ Готовы к AI-покупателю';
+    title.textContent = 'Хороший фундамент — но конкуренты не стоят на месте';
+    text.textContent = 'У вас уже есть база: мониторинг AI-присутствия, скрипты на возражения, речевая аналитика. Следующий уровень — AI-агенты на стороне продавца и оптимизация материалов под AI-чтение.';
+    points.innerHTML = '<li>Внедрить AI-агента для первичного анализа клиентов</li><li>Оптимизировать КП и сайт под AI-парсинг</li><li>Запустить comparison-страницы против конкурентов</li>';
+  } else if (score >= 3) {
+    badge.className = 'result-badge yellow';
+    badge.textContent = '⚠ Частично готовы';
+    title.textContent = 'Есть отдельные инструменты, но нет системы';
+    text.textContent = 'Ваш ОП знает об AI-покупателе, но реагирует ситуативно. Пока клиент систематически использует AI для оценки подрядчиков, ваша команда отвечает импровизацией. Это риск в каждой сделке.';
+    points.innerHTML = '<li>Составить регламент на возражение «прогоню через AI»</li><li>Внедрить речевую аналитику на 100% звонков</li><li>Проверить, как AI описывает компанию конкурентам</li>';
+  } else {
+    badge.className = 'result-badge red';
+    badge.textContent = '✗ Не готовы';
+    title.textContent = 'Ваш ОП работает по правилам 2020 года';
+    text.textContent = '67% покупателей уже используют AI при выборе подрядчика. Ваш менеджер об этом не знает — и теряет сделки, не понимая почему. Хорошая новость: это меняется за 3 месяца при правильном подходе.';
+    points.innerHTML = '<li>Проверить AI-присутствие компании прямо сейчас</li><li>Переписать discovery-скрипты под AI-покупателя</li><li>Внедрить речевую аналитику — от 15 000 ₽/мес</li><li>Пройти диагностику ОП под AI-покупателя</li>';
+  }
+}
+
+function handleFormSubmit() {
+  document.getElementById('state-result').style.display = 'none';
+  document.getElementById('state-loading').classList.add('active');
+  setTimeout(() => {
+    document.getElementById('state-loading').classList.remove('active');
+    document.getElementById('state-success').classList.add('active');
+  }, 2000);
+}
+</script>
+</body>
+</html>

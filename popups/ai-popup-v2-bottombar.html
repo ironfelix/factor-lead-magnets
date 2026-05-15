@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-покупатель 2026 — Нижняя панель</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Raleway',sans-serif;background:#f0ede6;min-height:100vh;display:flex;align-items:center;justify-content:center}
+
+/* === FAKE ARTICLE === */
+.fake-page{max-width:700px;width:100%;padding:40px 24px 200px;margin:0 auto}
+.fake-page h1{font-size:28px;font-weight:800;color:#111;margin-bottom:16px}
+.fake-page p{color:#676767;line-height:1.7;margin-bottom:16px;font-size:15px}
+
+/* === BOTTOM BAR === */
+.bottombar{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  transform:translateY(100%);transition:.4s cubic-bezier(.4,0,.2,1);
+}
+.bottombar.visible{transform:translateY(0)}
+
+/* collapsed state */
+.bb-collapsed{
+  background:linear-gradient(135deg,#111,#0d0d0d);
+  padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;cursor:pointer;
+  box-shadow:0 -4px 24px rgba(0,0,0,.25);
+}
+.bb-collapsed-text{
+  display:flex;align-items:center;gap:14px;flex:1;
+}
+.bb-pulse{
+  width:10px;height:10px;border-radius:50%;
+  background:#E3A96C;flex-shrink:0;
+  box-shadow:0 0 0 0 rgba(227,169,108,.4);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(227,169,108,.4)}
+  70%{box-shadow:0 0 0 10px rgba(227,169,108,0)}
+  100%{box-shadow:0 0 0 0 rgba(227,169,108,0)}
+}
+.bb-collapsed-title{font-size:14px;font-weight:700;color:#fff}
+.bb-collapsed-sub{font-size:11px;color:rgba(255,255,255,.45)}
+.bb-open-btn{
+  padding:8px 18px;background:linear-gradient(89deg,#E3A96C,#CC955B);
+  border:none;border-radius:8px;color:#fff;font-family:'Raleway',sans-serif;
+  font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0;
+}
+
+/* expanded state */
+.bb-expanded{
+  background:#fff;border-top:2px solid #f0ede6;
+  padding:28px 24px;display:none;
+  box-shadow:0 -8px 32px rgba(0,0,0,.12);
+}
+.bb-expanded.active{display:block}
+
+.bb-exp-inner{max-width:900px;margin:0 auto}
+.bb-exp-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:16px;align-items:end}
+
+.bb-exp-head{margin-bottom:20px}
+.bb-exp-eyebrow{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E3A96C;margin-bottom:6px}
+.bb-exp-title{font-size:18px;font-weight:800;color:#111;line-height:1.3}
+.bb-exp-sub{font-size:12px;color:#676767;margin-top:6px}
+
+.form-field{display:flex;flex-direction:column;gap:5px}
+.form-field label{font-size:11px;font-weight:600;color:#444}
+.form-field input{
+  border:1.5px solid #e0dbd4;border-radius:8px;
+  padding:10px 14px;font-family:'Raleway',sans-serif;font-size:13px;
+  color:#252525;outline:none;transition:.2s;background:#faf8f5;
+}
+.form-field input:focus{border-color:#E3A96C;background:#fff}
+.form-field input::placeholder{color:#b0a89a}
+
+.bb-submit{
+  padding:11px 20px;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  border:none;border-radius:8px;color:#fff;font-family:'Raleway',sans-serif;
+  font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;
+}
+
+.bb-close{
+  position:absolute;top:12px;right:16px;
+  background:none;border:none;font-size:18px;color:#999;cursor:pointer;
+  padding:4px;
+}
+
+/* states */
+.state{display:none}
+.state.active{display:block}
+
+.loading-row{text-align:center;padding:16px 0;color:#676767;font-size:13px;display:flex;align-items:center;justify-content:center;gap:12px}
+.spinner{width:24px;height:24px;border:2px solid #f0ede6;border-top-color:#E3A96C;border-radius:50%;animation:spin 1s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.success-row{text-align:center;padding:16px 0;display:flex;align-items:center;justify-content:center;gap:16px}
+.success-icon{width:40px;height:40px;background:linear-gradient(135deg,#E3A96C,#CC955B);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+.success-text-wrap .success-title{font-size:15px;font-weight:800;color:#111}
+.success-text-wrap .success-sub{font-size:12px;color:#676767;margin-top:2px}
+.success-link{display:inline-block;margin-top:6px;font-size:11px;color:#E3A96C;font-weight:700;text-decoration:none}
+
+/* demo controls */
+.demo-bar{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);
+  background:#252525;color:#fff;border-radius:12px;padding:10px 16px;
+  display:flex;gap:8px;align-items:center;font-size:11px;z-index:200;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+}
+.demo-btn{
+  padding:5px 12px;border:none;border-radius:6px;cursor:pointer;
+  font-family:'Raleway',sans-serif;font-size:10px;font-weight:700;transition:.2s;
+}
+.demo-btn.p{background:linear-gradient(89deg,#E3A96C,#CC955B);color:#fff}
+.demo-btn.s{background:rgba(255,255,255,.1);color:#fff}
+.demo-btn:hover{opacity:.85}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+  <span>Демо:</span>
+  <button class="demo-btn p" onclick="showBar(true)">Показать панель</button>
+  <button class="demo-btn s" onclick="toggleExpand()">Раскрыть / свернуть</button>
+  <button class="demo-btn s" onclick="showFormState('form')">Форма</button>
+  <button class="demo-btn s" onclick="showFormState('loading')">Загрузка</button>
+  <button class="demo-btn s" onclick="showFormState('success')">Успех</button>
+</div>
+
+<div class="fake-page">
+  <h1>Как адаптировать отдел продаж к AI-покупателю</h1>
+  <p>B2B-покупатель изменился быстрее, чем большинство отделов продаж успели это заметить. По данным Gartner (март 2026), 67% покупателей теперь предпочитают опыт без участия продавца.</p>
+  <p>К моменту первого звонка 83% уже сформировали требования и ранжировали предпочтительных подрядчиков. Менеджер конкурирует не с другим менеджером — он конкурирует с ChatGPT в кармане клиента.</p>
+  <p>Продавцы с AI-инструментами в 3,7 раза чаще выполняют квоту (Gartner). Команды с AI генерируют на 77% больше выручки на одного менеджера (Gong 2026). Вопрос не «внедрять или нет» — вопрос «в каком порядке».</p>
+</div>
+
+<!-- BOTTOM BAR -->
+<div class="bottombar" id="bottombar">
+  <!-- Collapsed -->
+  <div class="bb-collapsed" id="bb-collapsed" onclick="expandBar()">
+    <div class="bb-collapsed-text">
+      <div class="bb-pulse"></div>
+      <div>
+        <div class="bb-collapsed-title">Ваш клиент пришёл с ChatGPT — вы готовы?</div>
+        <div class="bb-collapsed-sub">Гайд «AI-покупатель B2B 2026» — бесплатно, в 1 клик</div>
+      </div>
+    </div>
+    <button class="bb-open-btn">Получить →</button>
+  </div>
+
+  <!-- Expanded -->
+  <div class="bb-expanded" id="bb-expanded">
+    <button class="bb-close" onclick="collapseBar()">✕</button>
+    <div class="bb-exp-inner">
+      <div class="bb-exp-head">
+        <div class="bb-exp-eyebrow">Гайд · Фактор Продаж</div>
+        <div class="bb-exp-title">AI-покупатель B2B: что делать в 2026 году</div>
+        <div class="bb-exp-sub">8 сценариев, 20-пунктный чек-лист, 5 решений для собственника</div>
+      </div>
+
+      <div class="state active" id="state-form">
+        <div class="bb-exp-row">
+          <div class="form-field">
+            <label>Имя</label>
+            <input type="text" placeholder="Иван Петров">
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" placeholder="ivan@company.ru">
+          </div>
+          <div class="form-field">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (900) 000-00-00">
+          </div>
+          <button class="bb-submit" onclick="handleSubmit()">Получить гайд →</button>
+        </div>
+      </div>
+
+      <div class="state" id="state-loading">
+        <div class="loading-row">
+          <div class="spinner"></div>
+          Отправляем гайд на почту…
+        </div>
+      </div>
+
+      <div class="state" id="state-success">
+        <div class="success-row">
+          <div class="success-icon">✓</div>
+          <div class="success-text-wrap">
+            <div class="success-title">Гайд отправлен на почту!</div>
+            <div class="success-sub">Внутри: 8 сценариев AI-покупателя, чек-лист из 20 пунктов и 5 решений для собственника</div>
+            <a href="../ai-buyer-2026-guide.html" class="success-link" target="_blank">Открыть гайд сразу →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let expanded = false;
+
+function showBar(show) {
+  const bar = document.getElementById('bottombar');
+  if (show) bar.classList.add('visible');
+  else bar.classList.remove('visible');
+}
+
+function expandBar() {
+  expanded = true;
+  document.getElementById('bb-collapsed').style.display = 'none';
+  document.getElementById('bb-expanded').classList.add('active');
+}
+
+function collapseBar() {
+  expanded = false;
+  document.getElementById('bb-collapsed').style.display = 'flex';
+  document.getElementById('bb-expanded').classList.remove('active');
+}
+
+function toggleExpand() {
+  if (!document.getElementById('bottombar').classList.contains('visible')) {
+    showBar(true);
+  }
+  if (expanded) collapseBar(); else expandBar();
+}
+
+function showFormState(s) {
+  document.querySelectorAll('.state').forEach(el => el.classList.remove('active'));
+  document.getElementById('state-' + s).classList.add('active');
+}
+
+function handleSubmit() {
+  showFormState('loading');
+  setTimeout(() => showFormState('success'), 2000);
+}
+
+// Auto-show after 4s
+setTimeout(() => showBar(true), 4000);
+</script>
+</body>
+</html>

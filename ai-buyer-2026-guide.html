@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-покупатель B2B: что делать в 2026 году | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Raleway',sans-serif;background:#f0ede6;color:#252525;font-size:14px;line-height:1.6}
+
+/* ======= PAGE LAYOUT ======= */
+.page{
+  width:210mm;min-height:297mm;margin:0 auto 32px;
+  background:#fff;box-shadow:0 4px 32px rgba(0,0,0,.14);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+
+/* ======= COVER ======= */
+.cover{
+  background:linear-gradient(160deg,#111 0%,#0a0a0a 100%);
+  color:#fff;padding:52px 56px 48px;min-height:297mm;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+}
+.cover::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      -55deg,
+      transparent,transparent 48px,
+      rgba(255,255,255,.018) 48px,rgba(255,255,255,.018) 50px
+    );
+}
+.cover-top{position:relative;z-index:1}
+.cover-brand{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,.32);
+  margin-bottom:64px;
+}
+.cover-brand span{color:#E3A96C}
+.cover-eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:#E3A96C;margin-bottom:20px;
+}
+.cover h1{
+  font-size:48px;font-weight:900;line-height:1.1;
+  margin-bottom:24px;letter-spacing:-.5px;
+}
+.cover h1 em{font-style:normal;color:#E3A96C}
+.cover-sub{
+  font-size:15px;color:rgba(255,255,255,.55);line-height:1.65;
+  max-width:420px;margin-bottom:48px;
+}
+.cover-stats{display:flex;gap:32px;flex-wrap:wrap;margin-bottom:0}
+.cover-stat{border-left:2px solid #E3A96C;padding-left:16px}
+.cover-stat-num{font-size:32px;font-weight:900;color:#E3A96C;line-height:1}
+.cover-stat-label{font-size:10px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.35}
+.cover-bottom{position:relative;z-index:1}
+.cover-author{font-size:11px;color:rgba(255,255,255,.3);margin-bottom:6px}
+.cover-date{font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.5px}
+
+/* ======= CONTENT PAGES ======= */
+.content-page{padding:48px 56px 44px;flex:1}
+
+.page-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:32px;padding-bottom:14px;
+  border-bottom:2px solid #f0ede6;
+}
+.page-header-brand{font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#b0a99a}
+.page-header-brand span{color:#E3A96C}
+.page-num{font-size:9px;font-weight:700;color:#ccc;letter-spacing:1px}
+
+.page-footer{
+  padding:14px 56px;border-top:1px solid #f0ede6;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#fff;
+}
+.page-footer-text{font-size:9px;color:#c0b8a8;letter-spacing:.5px}
+.page-footer-url{font-size:9px;color:#E3A96C;letter-spacing:.3px}
+
+/* ======= TYPOGRAPHY ======= */
+h2{font-size:20px;font-weight:800;color:#252525;margin-bottom:14px;line-height:1.25}
+h3{font-size:14px;font-weight:700;color:#252525;margin-bottom:8px;margin-top:20px}
+p{margin-bottom:12px;color:#3a3530}
+p:last-child{margin-bottom:0}
+strong{font-weight:700;color:#252525}
+
+.section-label{
+  font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:#E3A96C;margin-bottom:10px;display:block;
+}
+
+/* ======= LEAD STAT ======= */
+.lead-stat{
+  background:linear-gradient(135deg,#111 0%,#1a1a1a 100%);
+  color:#fff;border-radius:12px;padding:24px 28px;
+  margin-bottom:24px;position:relative;overflow:hidden;
+}
+.lead-stat::before{
+  content:'';position:absolute;top:0;right:0;width:120px;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(227,169,108,.07));
+}
+.lead-stat-num{font-size:48px;font-weight:900;color:#E3A96C;line-height:1;margin-bottom:6px}
+.lead-stat-text{font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
+.lead-stat-source{font-size:9px;color:rgba(255,255,255,.3);margin-top:8px;letter-spacing:.5px}
+
+/* ======= STAT GRID ======= */
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.stat-card{
+  background:#f7f5f1;border-radius:10px;padding:18px 20px;
+  border-left:3px solid #E3A96C;
+}
+.stat-card.dark{background:#111;color:#fff}
+.stat-card.dark .stat-num{color:#E3A96C}
+.stat-card.dark .stat-label{color:rgba(255,255,255,.55)}
+.stat-num{font-size:28px;font-weight:900;color:#111;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:#676767;line-height:1.4}
+.stat-source{font-size:9px;color:#b0a99a;margin-top:6px}
+
+/* ======= SCENARIOS ======= */
+.scenario-list{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.scenario{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#f7f5f1;border-radius:8px;padding:14px 16px;
+}
+.scenario-num{
+  min-width:28px;height:28px;background:#E3A96C;color:#fff;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;
+}
+.scenario-body{}
+.scenario-title{font-size:13px;font-weight:700;color:#252525;margin-bottom:3px}
+.scenario-desc{font-size:12px;color:#676767;line-height:1.45;margin:0}
+
+/* ======= COMPARE TABLE ======= */
+.compare-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:12px}
+.compare-table th{
+  background:#111;color:#fff;padding:10px 12px;text-align:left;
+  font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+}
+.compare-table th:first-child{border-radius:8px 0 0 0}
+.compare-table th:last-child{border-radius:0 8px 0 0}
+.compare-table td{
+  padding:9px 12px;border-bottom:1px solid #f0ede6;
+  color:#3a3530;vertical-align:top;
+}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table td:first-child{font-weight:600;color:#252525;width:32%}
+.compare-table .was{color:#999}
+.compare-table .now{color:#111;font-weight:600}
+.compare-table .now strong{color:#E3A96C}
+
+/* ======= WHAT STOPPED WORKING ======= */
+.stopped-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+.stopped-card{
+  border-radius:8px;padding:14px 16px;
+}
+.stopped-card.bad{background:#fef2f2;border-left:3px solid #e84c3d}
+.stopped-card.good{background:#f0faf0;border-left:3px solid #27ae60}
+.stopped-card-label{
+  font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:8px;
+}
+.stopped-card.bad .stopped-card-label{color:#e84c3d}
+.stopped-card.good .stopped-card-label{color:#27ae60}
+.stopped-item{font-size:12px;color:#3a3530;margin-bottom:5px;line-height:1.4}
+.stopped-item:last-child{margin-bottom:0}
+
+/* ======= CHECKLIST ======= */
+.checklist{list-style:none;margin-bottom:20px}
+.checklist li{
+  display:flex;gap:10px;padding:8px 0;
+  border-bottom:1px solid #f0ede6;font-size:12px;color:#3a3530;
+  align-items:flex-start;
+}
+.checklist li:last-child{border-bottom:none}
+.check-box{
+  min-width:18px;height:18px;border:2px solid #E3A96C;
+  border-radius:4px;flex-shrink:0;margin-top:1px;
+}
+.check-box.checked{background:#E3A96C;border-color:#E3A96C;
+  display:flex;align-items:center;justify-content:center;
+}
+.check-box.checked::after{content:'✓';color:#fff;font-size:10px;font-weight:800}
+.checklist-section{
+  font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:#E3A96C;padding-top:14px;margin-bottom:4px;display:block;
+}
+
+/* ======= DECISIONS CARDS ======= */
+.decisions{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.decision{
+  background:#f7f5f1;border-radius:10px;padding:18px 20px;
+  display:flex;gap:16px;align-items:flex-start;
+}
+.decision-num{
+  min-width:36px;height:36px;background:linear-gradient(135deg,#E3A96C,#CC955B);
+  color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:900;flex-shrink:0;
+}
+.decision-title{font-size:13px;font-weight:700;color:#252525;margin-bottom:4px}
+.decision-text{font-size:12px;color:#676767;line-height:1.5;margin:0}
+
+/* ======= RUSSIAN SPECIFIC ======= */
+.ru-block{
+  background:linear-gradient(135deg,#1a1a2e 0%,#111 100%);
+  border-radius:12px;padding:22px 24px;color:#fff;margin-bottom:16px;
+}
+.ru-block h3{color:#E3A96C;margin-top:0}
+.ru-block p{color:rgba(255,255,255,.75);font-size:12px}
+.ru-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.ru-tool{background:rgba(255,255,255,.07);border-radius:8px;padding:10px 12px}
+.ru-tool-name{font-size:12px;font-weight:700;color:#E3A96C}
+.ru-tool-desc{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px}
+
+/* ======= QUOTE ======= */
+.pull-quote{
+  border-left:3px solid #E3A96C;padding:14px 20px;
+  margin:16px 0;background:#fdf9f4;border-radius:0 8px 8px 0;
+}
+.pull-quote p{font-size:13px;font-style:italic;color:#3a3530;margin-bottom:6px}
+.pull-quote cite{font-size:10px;color:#b0a99a;font-style:normal;font-weight:600;letter-spacing:.5px}
+
+/* ======= CTA PAGE ======= */
+.cta-page{
+  background:linear-gradient(160deg,#111 0%,#0a0a0a 100%);
+  color:#fff;padding:52px 56px;min-height:297mm;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.cta-page::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      -55deg,transparent,transparent 48px,
+      rgba(255,255,255,.018) 48px,rgba(255,255,255,.018) 50px
+    );
+}
+.cta-inner{position:relative;z-index:1;max-width:480px}
+.cta-eyebrow{
+  font-size:10px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:#E3A96C;margin-bottom:20px;
+}
+.cta-h2{font-size:36px;font-weight:900;line-height:1.15;margin-bottom:16px}
+.cta-h2 em{font-style:normal;color:#E3A96C}
+.cta-sub{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6;margin-bottom:36px}
+.cta-points{list-style:none;margin-bottom:36px}
+.cta-points li{
+  display:flex;gap:10px;font-size:13px;color:rgba(255,255,255,.75);
+  margin-bottom:10px;align-items:flex-start;
+}
+.cta-points li::before{
+  content:'→';color:#E3A96C;font-weight:800;flex-shrink:0;margin-top:1px;
+}
+.cta-btn{
+  display:inline-block;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  color:#fff;font-family:'Raleway',sans-serif;font-size:14px;font-weight:700;
+  padding:14px 32px;border-radius:8px;text-decoration:none;letter-spacing:.3px;
+  margin-bottom:20px;
+}
+.cta-contact{font-size:11px;color:rgba(255,255,255,.3);margin-top:8px}
+.cta-contact a{color:#E3A96C;text-decoration:none}
+
+/* ======= PRINT ======= */
+@media print{
+  body{background:#fff}
+  .page{margin:0;box-shadow:none;page-break-after:always}
+  .page:last-child{page-break-after:avoid}
+}
+
+@page{size:A4;margin:0}
+</style>
+</head>
+<body>
+
+<!-- ======= PAGE 1: COVER ======= -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class="cover-brand"><span>Фактор</span> Продаж · Исследование · Май 2026</div>
+    <div class="cover-eyebrow">Для собственников B2B-бизнеса</div>
+    <h1>AI-покупатель:<br>что делать<br>в <em>2026 году</em></h1>
+    <p class="cover-sub">67% B2B-покупателей предпочитают сделку без участия менеджера. 45% уже использовали AI в последней закупке. Ваш клиент приходит подготовленным — вопрос в том, готовы ли вы.</p>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-num">67%</div>
+        <div class="cover-stat-label">покупателей хотят<br>опыт без продавца</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">3,7×</div>
+        <div class="cover-stat-label">чаще выполняют план<br>продавцы с AI</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-num">77%</div>
+        <div class="cover-stat-label">больше выручки<br>на одного менеджера</div>
+      </div>
+    </div>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-author">Александр Кандеев · Фактор Продаж · 200+ проектов</div>
+    <div class="cover-date">factor-prodazh.ru · 2026</div>
+  </div>
+</div>
+
+<!-- ======= PAGE 2: ГЛАВНЫЙ ИНСАЙТ ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">01</div>
+    </div>
+
+    <span class="section-label">Точка слома</span>
+    <h2>30 ноября 2022 года изменило B2B-продажи</h2>
+
+    <p>В этот день OpenAI запустил ChatGPT. За следующие 18 месяцев AI стал частью рабочего процесса B2B-покупателя. Не трендом — инструментом, которым пользуются каждый день.</p>
+
+    <div class="lead-stat">
+      <div class="lead-stat-num">45%</div>
+      <div class="lead-stat-text">B2B-покупателей использовали AI в <strong>последней реальной закупке</strong> — не «когда-то», а буквально в прошлый раз, когда выбирали подрядчика</div>
+      <div class="lead-stat-source">Gartner, март 2026</div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">67%</div>
+        <div class="stat-label">предпочитают опыт без участия продавца — год назад было 61%</div>
+        <div class="stat-source">Gartner, март 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">94%</div>
+        <div class="stat-label">B2B-руководителей обращались к языковой модели при принятии решения о покупке</div>
+        <div class="stat-source">Forrester, 2025</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-num">76%</div>
+        <div class="stat-label">продавцов не выполнили план в 2025 году</div>
+        <div class="stat-source">Salesforce State of Sales 2026</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-num">57%</div>
+        <div class="stat-label">продавцов фиксируют удлинение цикла сделки в 2026 году</div>
+        <div class="stat-source">Salesforce State of Sales 2026</div>
+      </div>
+    </div>
+
+    <p>Клиент приходит к вам <strong>уже зная</strong>, что написано в вашем КП, как вас оценивает рынок и какие вопросы задать, чтобы поймать на нестыковке. Менеджер конкурирует не с другим менеджером — он конкурирует с ChatGPT в кармане клиента.</p>
+
+    <p>Цена правильной перестройки: продавцы с AI-инструментами <strong>в 3,7 раза чаще выполняют квоту</strong> (Gartner), команды с AI генерируют на <strong>77% больше выручки на одного менеджера</strong> (Gong State of Revenue AI 2026).</p>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 3: 8 СЦЕНАРИЕВ ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">02</div>
+    </div>
+
+    <span class="section-label">Что делает покупатель</span>
+    <h2>8 сценариев: как клиент использует AI до и во время сделки</h2>
+
+    <p>К моменту первого звонка 83% покупателей уже сформировали требования, 94% ранжировали предпочтительных подрядчиков до контакта (6Sense 2025). Вот как именно они это делают.</p>
+
+    <div class="scenario-list">
+      <div class="scenario">
+        <div class="scenario-num">1</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Генерация шортлиста до первого контакта</div>
+          <p class="scenario-desc">Покупатель спрашивает AI: «Лучшие подрядчики по [нише]». Получает 5 названий с плюсами и минусами. Кого нет в ответе — тот выпал из сделки, даже не узнав о ней. 80% сделок уходят к вендору, которого AI назвал первым.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">2</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Сравнение коммерческих предложений</div>
+          <p class="scenario-desc">Клиент загружает 3–4 КП в Claude или ChatGPT и просит сводную таблицу: цена, срок, предоплата, гарантия, скрытые условия. AI выделяет лучшее значение по каждому параметру и называет «сбалансированного лидера». Это уже массовая практика российских закупщиков.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">3</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Поиск скрытых условий и «красных флагов»</div>
+          <p class="scenario-desc">«Есть ли в КП условия, которые приведут к скрытым расходам?» AI находит автопродление, штрафы за досрочный выход, потолки изменения цены, integration fees — то, что менеджер предпочёл бы не обсуждать.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">4</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Генерация вопросов для проверки подрядчика</div>
+          <p class="scenario-desc">«Составь чек-лист due diligence для выбора подрядчика по [нише]. Что спросить, чтобы поймать на нестыковке?» Anthropic выпустил готовый workflow с встроенным scorecard и checklist для оценки вендоров.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">5</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Ролевая игра перед переговорами</div>
+          <p class="scenario-desc">«Сыграй роль агрессивного менеджера по продажам. Я буду торговаться.» Покупатели тренируются отбивать те же приёмы, которым учат продавцов. Тенденция перешла из B2C-автодилеров в B2B.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">6</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Расчёт совокупной стоимости владения</div>
+          <p class="scenario-desc">Клиент строит трёхлетнюю модель: лицензия + настройка + интеграция + обучение + поддержка + апгрейд. Приходит на встречу не с вопросами, а с готовой финансовой моделью и просит её опровергнуть.</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">7</div>
+        <div class="scenario-body">
+          <div class="scenario-title">Проверка фактов в реальном времени во время звонка</div>
+          <p class="scenario-desc"><strong>Самый опасный сценарий.</strong> Покупатель в наушнике или во втором окне проверяет, правда ли то, что говорит менеджер. Volkswagen зафиксировал первый публичный кейс: клиент после тест-драйва сказал: «Мне нужно прогнать ваш оффер через мой AI».</p>
+        </div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-num">8</div>
+        <div class="scenario-body">
+          <div class="scenario-title">AI как третейский судья внутри buying-группы</div>
+          <p class="scenario-desc">13 внутренних и 9 внешних участников сделки используют ChatGPT, чтобы свести противоречивые позиции CFO, технического директора и операционного директора в единое решение — без вашего участия.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 4: ЧТО ПЕРЕСТАЛО / ЧТО НАЧАЛО РАБОТАТЬ ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">03</div>
+    </div>
+
+    <span class="section-label">Инструменты продаж</span>
+    <h2>Что перестало работать и чем заменять</h2>
+
+    <div class="stopped-grid">
+      <div class="stopped-card bad">
+        <div class="stopped-card-label">Устарело</div>
+        <div class="stopped-item"><strong>BANT в чистом виде.</strong> Метод 1960-х создан для одного ЛПР и бессрочных лицензий. Не работает с buying-группой из 13 человек.</div>
+        <div class="stopped-item"><strong>Презентация продукта на первой встрече.</strong> 72% сделок проваливаются, потому что покупатель не видит ценности (HubSpot 2025). К встрече клиент уже знает продукт.</div>
+        <div class="stopped-item"><strong>Скрипты возражений в жёстком виде.</strong> Покупатель прогнал ваши типовые возражения через ChatGPT ещё неделю назад.</div>
+        <div class="stopped-item"><strong>Перечисление трёх выгод / feature dumping.</strong> То, что знает AI, менеджер пересказывать не должен.</div>
+        <div class="stopped-item"><strong>Cold call «spray and pray».</strong> Работает только таргетированный многоканальный подход с персонализацией через AI.</div>
+      </div>
+      <div class="stopped-card good">
+        <div class="stopped-card-label">Работает сейчас</div>
+        <div class="stopped-item"><strong>Challenger Sale 2.0.</strong> AI находит инсайты о клиенте — менеджер использует их для teaching moment. Не «вот наш продукт», а «вот что мы видим в вашей ситуации».</div>
+        <div class="stopped-item"><strong>POV-продажи.</strong> «Вот что вы упускаете в вашей отрасли» вместо «вот наши три выгоды». 67% покупателей назвали discovery самой важной частью процесса (ASG).</div>
+        <div class="stopped-item"><strong>Диагностические продажи.</strong> AI-покупатель не хочет питча — хочет диагноза. Top performers, фокусирующиеся на проблемах, на 30% эффективнее.</div>
+        <div class="stopped-item"><strong>MEDDPICC с AI-заполнением.</strong> Gong и Clari автоматически заполняют поля из транскриптов звонков — 3,3–3,8× улучшение в win rate.</div>
+        <div class="stopped-item"><strong>Insight-Led Sales.</strong> Вертикально-специфичные данные, отраслевые прогнозы, кастомное обрамление рисков — против CFO работает лучше всего.</div>
+      </div>
+    </div>
+
+    <span class="section-label">Сравнение</span>
+    <h2>Продажи 2020 против 2026</h2>
+
+    <table class="compare-table">
+      <tr>
+        <th>Параметр</th>
+        <th>2020</th>
+        <th>2026</th>
+      </tr>
+      <tr>
+        <td>Первый контакт</td>
+        <td class="was">Google, выставки, холодный звонок</td>
+        <td class="now">ChatGPT, Perplexity, AI Overviews</td>
+      </tr>
+      <tr>
+        <td>Rep-free preference</td>
+        <td class="was">~25%</td>
+        <td class="now"><strong>67%</strong> (Gartner)</td>
+      </tr>
+      <tr>
+        <td>ЛПР в сделке</td>
+        <td class="was">5,4–6,8 человек</td>
+        <td class="now"><strong>13 внутренних + 9 внешних</strong></td>
+      </tr>
+      <tr>
+        <td>Journey до контакта</td>
+        <td class="was">~57% пути</td>
+        <td class="now">70–80% пути</td>
+      </tr>
+      <tr>
+        <td>Главная компетенция</td>
+        <td class="was">Знание продукта</td>
+        <td class="now"><strong>AI-грамотность + курирование инсайтов</strong></td>
+      </tr>
+      <tr>
+        <td>Главный KPI</td>
+        <td class="was">Количество звонков, встреч</td>
+        <td class="now"><strong>Качество ответа, выручка на менеджера</strong></td>
+      </tr>
+      <tr>
+        <td>Источник доверия</td>
+        <td class="was">Менеджер</td>
+        <td class="now"><strong>Ответы языковой модели, AI-валидация</strong></td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 5: РОССИЙСКАЯ СПЕЦИФИКА ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">04</div>
+    </div>
+
+    <span class="section-label">Российский рынок</span>
+    <h2>Специфика: два парадокса и конкретные инструменты</h2>
+
+    <p>Россия занимает нестандартную позицию: по отчётным показателям — один из лидеров внедрения, по реальной зрелости — среднее место.</p>
+
+    <div class="stat-grid" style="margin-bottom:20px">
+      <div class="stat-card">
+        <div class="stat-num">71%</div>
+        <div class="stat-label">российских компаний применяют GenAI хотя бы в одной функции</div>
+        <div class="stat-source">«Яков и Партнёры × Яндекс», 2025</div>
+      </div>
+      <div class="stat-card dark">
+        <div class="stat-num">48%</div>
+        <div class="stat-label">средних компаний не видят потребности в AI — это возможность войти раньше конкурентов</div>
+        <div class="stat-source">ИСИЭЗ ВШЭ, 15 000+ компаний</div>
+      </div>
+    </div>
+
+    <div class="ru-block">
+      <h3>Критический AI-разрыв по возрастам (Mediascope, ноябрь 2025)</h3>
+      <p>Ядро аудитории собственников (40–55 лет) системно AI не использует. Молодые покупатели (18–34 лет) в нём живут.</p>
+      <div class="ru-tools">
+        <div class="ru-tool">
+          <div class="ru-tool-name">18–24 года</div>
+          <div class="ru-tool-desc">51% ежемесячный охват AI</div>
+        </div>
+        <div class="ru-tool">
+          <div class="ru-tool-name">25–34 года</div>
+          <div class="ru-tool-desc">33% ежемесячный охват AI</div>
+        </div>
+        <div class="ru-tool">
+          <div class="ru-tool-name">35–44 года</div>
+          <div class="ru-tool-desc">23% ежемесячный охват AI</div>
+        </div>
+        <div class="ru-tool">
+          <div class="ru-tool-name">65+ лет</div>
+          <div class="ru-tool-desc">9% ежемесячный охват AI</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:16px">Вывод: у российского собственника одновременно продавцы, которые AI не освоили, и молодые покупатели, которые в нём работают каждый день. Асимметрия не в пользу отдела продаж.</p>
+
+    <h3>Российские инструменты с задокументированными результатами</h3>
+
+    <table class="compare-table">
+      <tr>
+        <th>Инструмент</th>
+        <th>Что делает</th>
+        <th>Задокументированный результат</th>
+      </tr>
+      <tr>
+        <td>Rechka.ai</td>
+        <td>Речевая аналитика звонков</td>
+        <td>Соблюдение скриптов: 29% → 54%; маржа +35% (металлопрокат); цикл сделки с 21–23 до 7–9 дней</td>
+      </tr>
+      <tr>
+        <td>SalesAI</td>
+        <td>AI-контроль качества продаж</td>
+        <td>Конверсия квалифицированный лид → сделка: 25% → 42% за 3 месяца, окупаемость пилота 328%</td>
+      </tr>
+      <tr>
+        <td>Calltouch Predict</td>
+        <td>Классификация звонков по 28 параметрам</td>
+        <td>Точность 96%; кейс: стоимость заявки с 67 000 до 41 000 ₽ после переработки скрипта</td>
+      </tr>
+      <tr>
+        <td>Битрикс24 CoPilot</td>
+        <td>AI внутри CRM: расшифровка, саммари, авто-заполнение</td>
+        <td>49% российского CRM-рынка; встроенный AI-помощник для повторных продаж</td>
+      </tr>
+    </table>
+
+    <p><strong>Стоимость:</strong> 15 000–75 000 ₽/мес. Бюджет окупается за квартал по задокументированным кейсам.</p>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 6: ЧЕК-ЛИСТ ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">05</div>
+    </div>
+
+    <span class="section-label">Практический инструмент</span>
+    <h2>Чек-лист трансформации: 20 ключевых пунктов</h2>
+
+    <p>Из 36-пунктового чек-листа — приоритетные 20, с которых начинает большинство компаний.</p>
+
+    <ul class="checklist">
+      <span class="checklist-section">А. Аналитика и подготовка к встречам</span>
+      <li>
+        <div class="check-box"></div>
+        Каждый менеджер перед встречей прогоняет публичные данные клиента через языковую модель и приходит с гипотезой о целях и болях.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Перед каждой встречей продавец проверяет, как AI описывает вашу компанию в ответ на типичные запросы покупателя.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        В CRM появилась категория «клиент пришёл с AI-анализом» — фиксируется и анализируется отдельно.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Отдел использует корпоративный аккаунт ChatGPT или GigaChat, а не личные подписки у каждого менеджера.
+      </li>
+      <span class="checklist-section">Б. Скрипты и регламенты</span>
+      <li>
+        <div class="check-box"></div>
+        В discovery-скрипте есть прямой вопрос: «Какие AI-инструменты вы используете для сравнения подрядчиков?»
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Регламент запрещает заявления без источников: клиент проверит в реальном времени.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Команда обучена формату «What did the AI get wrong about us?» — открывать встречу с признания, что клиент уже что-то прочитал.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Есть скрипт реакции на возражение «Мне нужно прогнать ваш оффер через AI» — без паники, с конкретным следующим шагом.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Discovery строится вокруг стоимости бездействия, а не вокруг окупаемости продукта.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Регламент follow-up: не «Есть обновления?», а конкретный value-add: новый бенчмарк, отраслевой инсайт, кейс.
+      </li>
+      <span class="checklist-section">В. Обучение</span>
+      <li>
+        <div class="check-box"></div>
+        Раз в квартал: тренинг «вооружённый клиент» — роль-плей, где покупатель использует ChatGPT в живом режиме.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Каждый новый менеджер проходит курс по промпт-инжинирингу для продаж в первый месяц.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        В отделе назначен AI-чемпион: отвечает за корпус промптов и перенос новых практик.
+      </li>
+      <span class="checklist-section">Г. Технологии</span>
+      <li>
+        <div class="check-box"></div>
+        Речевая аналитика внедрена на 100% звонков (Rechka.ai, SalesAI или аналог).
+      </li>
+      <li>
+        <div class="check-box"></div>
+        CRM синхронизируется с языковой моделью: автоматическое резюме встреч, черновик follow-up.
+      </li>
+      <span class="checklist-section">Д. Метрики</span>
+      <li>
+        <div class="check-box"></div>
+        Измеряется AI-mention share: как часто бренд упоминается в ответах языковой модели на категорийные запросы.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Главная метрика email-работы: качество ответа, а не объём.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        Квота пересмотрена: убраны метрики, обесцененные AI (количество звонков, объём холодных писем).
+      </li>
+      <span class="checklist-section">Е. Контент и материалы</span>
+      <li>
+        <div class="check-box"></div>
+        КП в модульном формате: структура, сравнительные таблицы, FAQ, конкретные цифры — AI может их разобрать.
+      </li>
+      <li>
+        <div class="check-box"></div>
+        На сайте публичные цены или вилки: AI-покупатель не будет тратить время, если их нет.
+      </li>
+    </ul>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 7: 5 РЕШЕНИЙ ======= -->
+<div class="page">
+  <div class="content-page">
+    <div class="page-header">
+      <div class="page-header-brand"><span>Фактор</span> Продаж</div>
+      <div class="page-num">06</div>
+    </div>
+
+    <span class="section-label">Для собственника</span>
+    <h2>Пять решений на 2026 год</h2>
+
+    <div class="decisions">
+      <div class="decision">
+        <div class="decision-num">1</div>
+        <div>
+          <div class="decision-title">Признать: асимметрия информации больше не на вашей стороне</div>
+          <p class="decision-text">Клиент знает столько же, а часто больше, чем junior-менеджер. Это не повод сокращать продавцов — повод поднять уровень разговора. Если менеджер говорит то, что клиент уже прочитал в ChatGPT, клиент уйдёт к тому, кто скажет больше.</p>
+        </div>
+      </div>
+      <div class="decision">
+        <div class="decision-num">2</div>
+        <div>
+          <div class="decision-title">Пересмотреть, что именно продаёт менеджер</div>
+          <p class="decision-text">Не продукт, не услугу — интерпретацию ситуации клиента. Это то, чего AI не умеет: связать данные с уникальным контекстом конкретного бизнеса. POV-продажи и диагностические продажи — не модные термины, а новая основа для выживания.</p>
+        </div>
+      </div>
+      <div class="decision">
+        <div class="decision-num">3</div>
+        <div>
+          <div class="decision-title">Внедрить AI на стороне продавца — раньше конкурентов</div>
+          <p class="decision-text">Российский рынок sales-tech дозрел: Rechka.ai, SalesAI, Битрикс24 CoPilot, Roistat, Calltouch — у каждого задокументированные кейсы роста маржи на 35%, конверсии в два раза, сокращения цикла сделки втрое. Стоимость: 15 000–75 000 ₽/мес. Окупается за квартал.</p>
+        </div>
+      </div>
+      <div class="decision">
+        <div class="decision-num">4</div>
+        <div>
+          <div class="decision-title">Подготовить КП и сайт к AI-чтению</div>
+          <p class="decision-text">Если ChatGPT не цитирует вас — вас нет в шортлистах потенциальных клиентов. Это новая воронка верхнего уровня. Структурированные КП, сравнительные страницы, конкретные цифры в кейсах, публичные цены — обязательная гигиена в 2026 году.</p>
+        </div>
+      </div>
+      <div class="decision">
+        <div class="decision-num">5</div>
+        <div>
+          <div class="decision-title">Перестроить отдел продаж до конца 2026 года</div>
+          <p class="decision-text">К 2028 году 90% B2B-закупок будут проходить через AI-агентов (Gartner). У вас есть 18–24 месяца. Сделать всё одновременно нельзя. Точки старта известны: речевая аналитика на 100% звонков, переписанные discovery-скрипты, обучение команды промпт-инжинирингу, материалы под AI-разбор.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>«В конечном итоге, когда у нас и у наших клиентов будет AI, наши боты будут разговаривать между собой, обмениваясь фактами о продуктах и потребностях.»</p>
+      <cite>Вице-президент крупной химической компании · McKinsey</cite>
+    </div>
+
+    <p>Это не фантастика — это прогноз Gartner на 2028 год: 90% B2B-закупок через AI-агентов, $15 трлн B2B-spend через них. К 2030 году 75% покупателей вернутся к предпочтению человека над AI — но вернутся не к продавцу-источнику фактов. Вернутся к продавцу-навигатору, который умеет работать там, где AI ошибается.</p>
+
+  </div>
+  <div class="page-footer">
+    <span class="page-footer-text">© 2026 Фактор Продаж · Конфиденциально</span>
+    <span class="page-footer-url">factor-prodazh.ru</span>
+  </div>
+</div>
+
+<!-- ======= PAGE 8: CTA ======= -->
+<div class="page cta-page">
+  <div class="cta-inner">
+    <div class="cta-eyebrow">Следующий шаг</div>
+    <h2 class="cta-h2">Разберём ваш отдел продаж<br>под <em>AI-покупателя</em></h2>
+    <p class="cta-sub">На диагностике смотрим: как клиент видит вас в ChatGPT, что сломано в discovery-скриптах, какие инструменты внедрить в первую очередь.</p>
+    <ul class="cta-points">
+      <li>Аудит того, что AI говорит о вашей компании</li>
+      <li>Разбор discovery-скриптов под AI-покупателя</li>
+      <li>Приоритизация: что внедрить в первый месяц</li>
+      <li>Дорожная карта на 3 месяца с конкретными шагами</li>
+    </ul>
+    <a class="cta-btn" href="https://factor-prodazh.ru">Записаться на диагностику →</a>
+    <div class="cta-contact">
+      Или напишите напрямую: <a href="https://factor-prodazh.ru">factor-prodazh.ru</a>
+    </div>
+    <div style="margin-top:48px;font-size:11px;color:rgba(255,255,255,.2);line-height:1.6">
+      Фактор Продаж · 200+ построенных отделов продаж · С 2014 года<br>
+      factor-prodazh.ru · Александр Кандеев
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

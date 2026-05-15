@@ -3,49 +3,196 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Лид-магнит «Продажи в 2026» | Фактор Продаж</title>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+<title>Лид-магниты | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Raleway',sans-serif;background:#111;color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
-.wrap{max-width:680px;width:100%;text-align:center}
-.brand{font-size:12px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:32px}
+body{font-family:'Raleway',sans-serif;background:#111;color:#fff;min-height:100vh;padding:48px 20px 64px}
+
+.wrap{max-width:800px;width:100%;margin:0 auto}
+
+/* Header */
+.brand{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:40px}
 .brand span{color:#E3A96C}
-h1{font-size:clamp(24px,4vw,36px);font-weight:900;line-height:1.2;margin-bottom:12px}
-h1 em{font-style:normal;background:linear-gradient(89deg,#E3A96C,#CC955B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sub{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:48px;line-height:1.6}
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
-.card{background:#1a1a1a;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:24px;text-decoration:none;transition:.2s;display:flex;flex-direction:column;gap:10px}
-.card:hover{border-color:rgba(227,169,108,.35);transform:translateY(-3px)}
-.card-icon{font-size:28px}
-.card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3)}
-.card-title{font-size:17px;font-weight:800;color:#fff;line-height:1.3}
-.card-desc{font-size:13px;color:rgba(255,255,255,.45);line-height:1.5}
-.card-cta{margin-top:4px;font-size:12px;font-weight:700;color:#E3A96C}
-@media(max-width:500px){.cards{grid-template-columns:1fr}}
+
+/* Section */
+.section{margin-bottom:60px}
+.section-tag{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;color:#E3A96C;border:1px solid rgba(227,169,108,.3);
+  border-radius:20px;padding:4px 12px;margin-bottom:16px;
+}
+.section-title{font-size:clamp(20px,3vw,28px);font-weight:900;line-height:1.2;margin-bottom:8px}
+.section-title em{font-style:normal;background:linear-gradient(89deg,#E3A96C,#CC955B);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{font-size:13px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:28px;max-width:560px}
+
+/* Cards grid */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards.three{grid-template-columns:1fr 1fr 1fr}
+
+.card{
+  background:#1a1a1a;border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;padding:20px;text-decoration:none;
+  transition:.2s;display:flex;flex-direction:column;gap:8px;
+}
+.card:hover{border-color:rgba(227,169,108,.35);transform:translateY(-3px);background:#1e1e1e}
+.card.featured{
+  background:linear-gradient(135deg,rgba(227,169,108,.12),rgba(204,149,91,.06));
+  border-color:rgba(227,169,108,.25);
+  grid-column:span 2;
+}
+.card-icon{font-size:24px;margin-bottom:4px}
+.card-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3)}
+.card-title{font-size:15px;font-weight:800;color:#fff;line-height:1.3}
+.card-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.5}
+.card-cta{margin-top:4px;font-size:11px;font-weight:700;color:#E3A96C}
+
+/* Divider */
+.divider{border:none;border-top:1px solid rgba(255,255,255,.07);margin:12px 0 48px}
+
+/* Footer */
+.footer{font-size:10px;color:rgba(255,255,255,.18);text-align:center;margin-top:48px;line-height:1.8;letter-spacing:.3px}
+
+@media(max-width:600px){
+  .cards,.cards.three{grid-template-columns:1fr}
+  .card.featured{grid-column:span 1}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="brand"><span>Фактор</span> Продаж · Черновик · Май 2026</div>
-  <h1>Где ваш ОП теряет<br>до <em>40% выручки?</em></h1>
-  <p class="sub">ВВП в минусе. ЦБ держит 14,5%. НДС вырос до 22%.<br>68,7% МСП потеряли выручку. Старые инструменты продаж больше не окупаются.<br>Что делать с отделом продаж прямо сейчас. Разбираем по существу.</p>
-  <div class="cards">
-    <a href="sales-2026-guide.html" class="card">
-      <div class="card-icon">📋</div>
-      <div class="card-label">Лид-магнит</div>
-      <div class="card-title">Гайд «Реформа ОП: Продажи в 2026»</div>
-      <div class="card-desc">10-страничный гайд в стиле PDF. Чек-листы, кейсы, система продаж при ставке 14%.</div>
-      <div class="card-cta">Открыть гайд →</div>
-    </a>
-    <a href="popups/" class="card">
-      <div class="card-icon">🗔</div>
-      <div class="card-label">6 вариантов попапов</div>
-      <div class="card-title">Витрина попапов с интерактивными состояниями</div>
-      <div class="card-desc">Модал, нижняя панель, fullscreen, drawer, флоат, inline. Все состояния: форма → загрузка → успех.</div>
-      <div class="card-cta">Открыть витрину →</div>
-    </a>
+
+  <div class="brand"><span>Фактор</span> Продаж · Витрина материалов · Май 2026</div>
+
+  <!-- ===== LEAD MAGNET 1 ===== -->
+  <div class="section">
+    <span class="section-tag">Лид-магнит #1</span>
+    <h2 class="section-title">Продажи в <em>2026</em></h2>
+    <p class="section-sub">ВВП в минусе. ЦБ держит 14,5%. НДС вырос до 22%. 68,7% МСП потеряли выручку. Где ваш ОП теряет до 40% выручки — разбираем по существу.</p>
+
+    <div class="cards">
+      <a href="sales-2026-guide.html" class="card featured">
+        <div class="card-icon">📋</div>
+        <div class="card-label">Гайд · 10 страниц · PDF-стиль</div>
+        <div class="card-title">«Реформа ОП: Продажи в 2026» — основной материал</div>
+        <div class="card-desc">Чек-листы скрытых потерь, система продаж при ставке 14%, конкретные шаги для перестройки ОП. Всё с цифрами.</div>
+        <div class="card-cta">Открыть гайд →</div>
+      </a>
+
+      <a href="popups/popup-v1-modal.html" class="card">
+        <div class="card-icon">🗔</div>
+        <div class="card-label">Вариант 1 · Модальное окно</div>
+        <div class="card-title">Классический 2-колоночный попап</div>
+        <div class="card-desc">Тёмная левая панель + форма. Все состояния: форма → загрузка → успех.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v2-bottombar.html" class="card">
+        <div class="card-icon">▬</div>
+        <div class="card-label">Вариант 2 · Нижняя панель</div>
+        <div class="card-title">Sticky bottombar с раскрытием</div>
+        <div class="card-desc">Компактная полоска → расширяется с формой 3 поля. Появляется через 4 сек.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v3-fullscreen.html" class="card">
+        <div class="card-icon">⬛</div>
+        <div class="card-label">Вариант 3 · Fullscreen exit-intent</div>
+        <div class="card-title">На всё окно при попытке уйти</div>
+        <div class="card-desc">«Вы уходите без чек-листа». Тёмный фон, крупный заголовок, urgency.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v4-drawer.html" class="card">
+        <div class="card-icon">◧</div>
+        <div class="card-label">Вариант 4 · Drawer / боковая панель</div>
+        <div class="card-title">Выдвигается справа — диагностика ОП</div>
+        <div class="card-desc">Не лид-магнит, а запись на диагностику. Имя + телефон. Мягкий CTA.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v5-compact.html" class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-label">Вариант 5 · Float card</div>
+        <div class="card-title">Компактная карточка снизу-справа</div>
+        <div class="card-desc">68% МСП потеряли выручку. Не мешает читать. Раскрывается по клику.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v6-inline.html" class="card">
+        <div class="card-icon">📄</div>
+        <div class="card-label">Вариант 6 · Inline блок</div>
+        <div class="card-title">Встроен в статью как нативный блок</div>
+        <div class="card-desc">40% выручки. Не попап — часть контента. Расширенная форма в 3 поля.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v7-entry.html" class="card">
+        <div class="card-icon">🚪</div>
+        <div class="card-label">Вариант 7 · Entry fullscreen</div>
+        <div class="card-title">Приветственный экран при заходе</div>
+        <div class="card-desc">Через 1 сек после загрузки. Тёмная левая панель + белая форма. 68%.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/popup-v8-quiz.html" class="card">
+        <div class="card-icon">🧩</div>
+        <div class="card-label">Вариант 8 · Квиз-диагностика</div>
+        <div class="card-title">4 вопроса → красный/жёлтый/зелёный</div>
+        <div class="card-desc">Команда, звонки, воронка, скорость ответа. Результат с планом действий.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+    </div>
   </div>
+
+  <hr class="divider">
+
+  <!-- ===== LEAD MAGNET 2 ===== -->
+  <div class="section">
+    <span class="section-tag">Лид-магнит #2</span>
+    <h2 class="section-title">AI-покупатель <em>2026</em></h2>
+    <p class="section-sub">67% B2B-покупателей хотят опыт без продавца. 45% использовали AI в последней закупке. Ваш клиент приходит с ChatGPT — он уже знает, что в вашем КП.</p>
+
+    <div class="cards three">
+      <a href="ai-buyer-2026-guide.html" class="card featured" style="grid-column:span 3">
+        <div class="card-icon">🤖</div>
+        <div class="card-label">Гайд · 8 страниц · PDF-стиль</div>
+        <div class="card-title">«AI-покупатель B2B: что делать в 2026 году» — основной материал</div>
+        <div class="card-desc">8 сценариев как клиент использует AI до и во время сделки. Что перестало работать. Чек-лист из 20 пунктов. Российские инструменты с задокументированными кейсами. 5 решений для собственника.</div>
+        <div class="card-cta">Открыть гайд →</div>
+      </a>
+
+      <a href="popups/ai-popup-v1-modal.html" class="card">
+        <div class="card-icon">🗔</div>
+        <div class="card-label">AI-попап 1 · Модальное окно</div>
+        <div class="card-title">2-колоночный попап: 45% + форма</div>
+        <div class="card-desc">«Ваш клиент пришёл с ChatGPT». Тёмная панель с ключевыми инсайтами + форма 3 поля.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/ai-popup-v2-bottombar.html" class="card">
+        <div class="card-icon">▬</div>
+        <div class="card-label">AI-попап 2 · Нижняя панель</div>
+        <div class="card-title">Sticky bar: «Готов ли ваш ОП?»</div>
+        <div class="card-desc">Появляется через 4 сек. Компактная полоска раскрывается с формой. Пульсирующий индикатор.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+
+      <a href="popups/ai-popup-v3-quiz.html" class="card">
+        <div class="card-icon">🧩</div>
+        <div class="card-label">AI-попап 3 · Квиз</div>
+        <div class="card-title">«Готов ли ваш ОП к AI-покупателю?»</div>
+        <div class="card-desc">4 вопроса → красный/жёлтый/зелёный результат с персональным планом действий.</div>
+        <div class="card-cta">Открыть →</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    Фактор Продаж · factor-prodazh.ru · Черновик · Май 2026<br>
+    Александр Кандеев · 200+ построенных отделов продаж с 2014
+  </div>
+
 </div>
 </body>
 </html>
