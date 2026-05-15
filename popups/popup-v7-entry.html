@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V7 · Entry Fullscreen — Попапы лид-магнита | Фактор Продаж</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --orange:linear-gradient(89deg,#E3A96C,#CC955B);
+  --orange-s:#E3A96C;
+  --blue:#453FDF;
+  --dark:#252525;
+  --muted:#676767;
+  --font:'Raleway',sans-serif;
+}
+body{font-family:var(--font);background:#1a1a18;color:#fff;min-height:100vh}
+
+/* ── DEMO ── */
+.demo-wrap{
+  padding:32px 40px;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.demo-wrap h1{font-size:14px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.demo-wrap p{font-size:13px;color:rgba(255,255,255,.3);margin-bottom:16px}
+.demo-states{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.demo-states button,.btn-open{
+  font-family:var(--font);font-size:12px;font-weight:600;
+  padding:7px 16px;border-radius:6px;border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);cursor:pointer;transition:.15s
+}
+.demo-states button:hover,.btn-open:hover{border-color:var(--orange-s);color:var(--orange-s)}
+.btn-open{
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  color:#fff;border:none;font-size:13px;font-weight:700;padding:10px 24px;margin-bottom:12px
+}
+
+/* ── OVERLAY ── */
+.overlay{
+  position:fixed;inset:0;
+  background:#0d0c0a;
+  display:flex;align-items:stretch;
+  z-index:1000;
+  opacity:0;pointer-events:none;
+  transition:opacity .4s ease
+}
+.overlay.active{opacity:1;pointer-events:all}
+
+/* ── LAYOUT ── */
+.ep-left{
+  flex:0 0 52%;
+  padding:56px 64px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;
+  background:#111110;
+}
+/* textured background */
+.ep-left::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 40px,
+      rgba(255,255,255,.013) 40px,
+      rgba(255,255,255,.013) 41px
+    );
+  pointer-events:none
+}
+.ep-left::after{
+  content:'';position:absolute;
+  bottom:-120px;right:-80px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(69,63,223,.18) 0%,transparent 65%);
+  pointer-events:none
+}
+
+.ep-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-bottom:28px;
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.4);
+  text-transform:uppercase;letter-spacing:1.2px
+}
+.ep-eyebrow::before{
+  content:'';width:24px;height:2px;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  border-radius:2px
+}
+
+.ep-h1{
+  font-size:clamp(32px,3.6vw,52px);
+  font-weight:900;line-height:1.12;
+  margin-bottom:24px;color:#fff
+}
+.ep-h1 em{
+  font-style:normal;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+
+.ep-desc{
+  font-size:15px;color:rgba(255,255,255,.5);line-height:1.65;
+  margin-bottom:36px;max-width:440px
+}
+
+.ep-stats{
+  display:flex;gap:0;
+  border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  overflow:hidden;width:fit-content
+}
+.ep-stat{
+  padding:14px 22px;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.ep-stat:last-child{border-right:none}
+.ep-stat-num{
+  font-size:26px;font-weight:900;color:#E3A96C;line-height:1
+}
+.ep-stat-label{
+  font-size:10px;color:rgba(255,255,255,.35);margin-top:3px;line-height:1.4
+}
+
+/* ── RIGHT: FORM ── */
+.ep-right{
+  flex:1;
+  background:#fff;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:56px 52px;
+  position:relative
+}
+.ep-close{
+  position:absolute;top:20px;right:20px;
+  width:34px;height:34px;border-radius:50%;border:none;
+  background:rgba(0,0,0,.06);cursor:pointer;
+  font-size:18px;color:var(--muted);
+  display:flex;align-items:center;justify-content:center;
+  transition:.15s
+}
+.ep-close:hover{background:rgba(0,0,0,.12);color:var(--dark)}
+
+.form-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(227,169,108,.1);border:1px solid rgba(227,169,108,.2);
+  border-radius:20px;padding:4px 12px;
+  font-size:10px;font-weight:700;color:#CC955B;
+  text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:16px;width:fit-content
+}
+.form-title{font-size:22px;font-weight:800;color:var(--dark);margin-bottom:6px;line-height:1.25}
+.form-sub{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5}
+
+.form-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.form-field label{font-size:10px;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.6px}
+.form-field input{
+  font-family:var(--font);font-size:14px;
+  padding:12px 14px;border:1.5px solid #e4e0d9;border-radius:8px;
+  color:var(--dark);outline:none;transition:.15s;background:#fafaf8
+}
+.form-field input:focus{border-color:var(--blue);background:#fff}
+.form-field input::placeholder{color:#c0bab0}
+
+.btn-cta{
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:14px 20px;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  color:#fff;border:none;border-radius:9px;cursor:pointer;
+  width:100%;margin-top:4px;letter-spacing:.3px;
+  transition:.15s
+}
+.btn-cta:hover{opacity:.9;transform:translateY(-1px)}
+
+.form-note{font-size:11px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+
+.form-bullets{
+  margin-top:20px;padding-top:18px;
+  border-top:1px solid #f0ece6;
+  display:flex;flex-direction:column;gap:7px
+}
+.form-bullet{
+  display:flex;align-items:center;gap:9px;
+  font-size:12px;color:var(--muted);line-height:1.4
+}
+.form-bullet-dot{
+  width:16px;height:16px;flex:none;border-radius:4px;
+  background:rgba(227,169,108,.15);border:1px solid rgba(227,169,108,.3);
+  background-image:url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='%23E3A96C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:center
+}
+
+/* ── LOADING ── */
+.ep-loading{
+  position:absolute;inset:0;background:#fff;
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px
+}
+.spinner{
+  width:40px;height:40px;border-radius:50%;
+  border:3px solid #f0ede8;border-top-color:#E3A96C;
+  animation:spin .7s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ep-loading p{font-size:14px;color:var(--muted);font-weight:600}
+
+/* ── SUCCESS (full screen) ── */
+.ep-success{
+  position:fixed;inset:0;background:#0d0c0a;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  z-index:1001;text-align:center;padding:40px
+}
+.success-ring{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,#4ade80,#22c55e);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;color:#fff;margin-bottom:24px;
+  box-shadow:0 12px 32px rgba(34,197,94,.3)
+}
+.ep-success h2{font-size:28px;font-weight:900;color:#fff;margin-bottom:10px}
+.ep-success p{font-size:15px;color:rgba(255,255,255,.5);line-height:1.6;max-width:400px;margin-bottom:8px}
+.btn-diag{
+  display:inline-block;margin-top:24px;
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:13px 28px;
+  background:linear-gradient(89deg,#E3A96C,#CC955B);
+  color:#fff;border-radius:9px;text-decoration:none;transition:.15s
+}
+.btn-diag:hover{opacity:.9}
+.btn-close-txt{
+  margin-top:14px;background:none;border:none;cursor:pointer;
+  font-family:var(--font);font-size:13px;color:rgba(255,255,255,.3);transition:.15s
+}
+.btn-close-txt:hover{color:rgba(255,255,255,.6)}
+
+@media(max-width:760px){
+  .overlay{flex-direction:column}
+  .ep-left{flex:0 0 auto;padding:40px 28px}
+  .ep-right{padding:36px 28px}
+  .ep-stats{flex-wrap:wrap}
+  .ep-h1{font-size:28px}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-wrap">
+  <h1>V7 · Entry Fullscreen</h1>
+  <p>Триггер: загрузка страницы (через 1 сек). Покрывает весь экран. Темная левая + белая правая.</p>
+  <button class="btn-open" onclick="openEP()">Открыть попап</button>
+  <div class="demo-states">
+    <button onclick="setEPState('form')">Форма</button>
+    <button onclick="setEPState('loading')">Загрузка</button>
+    <button onclick="setEPState('success')">Успех</button>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="epOverlay">
+
+  <!-- LEFT -->
+  <div class="ep-left">
+    <div class="ep-eyebrow">Фактор Продаж · 2026</div>
+    <h1 class="ep-h1">Где ваш ОП<br>теряет до<br><em>40% выручки?</em></h1>
+    <p class="ep-desc">ВВП в минусе. ЦБ держит 14,5%. 68,7% МСП потеряли выручку.<br>Два инструмента покажут, где именно уходят деньги.</p>
+    <div class="ep-stats">
+      <div class="ep-stat">
+        <div class="ep-stat-num">40%</div>
+        <div class="ep-stat-label">выручки теряют<br>B2B-отделы продаж</div>
+      </div>
+      <div class="ep-stat">
+        <div class="ep-stat-num">7</div>
+        <div class="ep-stat-label">скрытых точек<br>утечки денег</div>
+      </div>
+      <div class="ep-stat">
+        <div class="ep-stat-num">200+</div>
+        <div class="ep-stat-label">проектов<br>в практике</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="ep-right" id="epFormWrap">
+    <button class="ep-close" onclick="closeEP()" aria-label="Закрыть">✕</button>
+
+    <!-- FORM STATE -->
+    <div id="epForm">
+      <div class="form-tag">Чек-листы · Бесплатно</div>
+      <div class="form-title">Скачайте два инструмента</div>
+      <div class="form-sub">Пришлём на email. Начните с чек-листа скрытых потерь — 15 минут и вы увидите картину.</div>
+
+      <form onsubmit="handleEPSubmit(event)" novalidate>
+        <div class="form-field">
+          <label for="e-name">Имя</label>
+          <input type="text" id="e-name" name="name" placeholder="Алексей" required autocomplete="given-name">
+        </div>
+        <div class="form-field">
+          <label for="e-email">Email</label>
+          <input type="email" id="e-email" name="email" placeholder="alex@company.ru" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="e-phone">Телефон</label>
+          <input type="tel" id="e-phone" name="phone" placeholder="+7 (___) ___-__-__" required autocomplete="tel">
+        </div>
+        <button type="submit" class="btn-cta">Скачать чек-листы →</button>
+        <div class="form-note">Без спама и звонков без предупреждения.</div>
+      </form>
+
+      <div class="form-bullets">
+        <div class="form-bullet"><div class="form-bullet-dot"></div>Чек-лист скрытых потерь: 7 точек утечки денег</div>
+        <div class="form-bullet"><div class="form-bullet-dot"></div>Экспресс-аудит ОП: шаблон проверки за 15 минут</div>
+        <div class="form-bullet"><div class="form-bullet-dot"></div>Конкретный план на первые 30 дней</div>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="ep-loading" id="epLoading">
+      <div class="spinner"></div>
+      <p>Отправляем чек-листы…</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- SUCCESS (full screen) -->
+<div class="ep-success" id="epSuccess">
+  <div class="success-ring">✓</div>
+  <h2>Чек-листы отправлены!</h2>
+  <p>Проверьте почту — письмо уже там. Начните с чек-листа скрытых потерь.</p>
+  <p>Хотите разобраться подробнее? Запишитесь на разбор: 30 минут, бесплатно.</p>
+  <a href="/services/besplatnaya-diagnostika-op/" class="btn-diag">Записаться на разбор →</a>
+  <button class="btn-close-txt" onclick="closeEP()">Закрыть</button>
+</div>
+
+<script>
+const overlay = document.getElementById('epOverlay');
+const success = document.getElementById('epSuccess');
+
+function openEP(){
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setEPState('form');
+}
+function closeEP(){
+  overlay.classList.remove('active');
+  success.style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeEP(); });
+
+function setEPState(s){
+  document.getElementById('epForm').style.display = s === 'form' ? 'block' : 'none';
+  document.getElementById('epLoading').style.display = s === 'loading' ? 'flex' : 'none';
+  success.style.display = s === 'success' ? 'flex' : 'none';
+  if(s === 'success') overlay.classList.remove('active');
+  else if(!overlay.classList.contains('active')) openEP();
+}
+
+function handleEPSubmit(e){
+  e.preventDefault();
+  const name = document.getElementById('e-name').value.trim();
+  const email = document.getElementById('e-email').value.trim();
+  const phone = document.getElementById('e-phone').value.trim();
+  if(!name || !email || !phone){ alert('Заполните все поля'); return; }
+  setEPState('loading');
+  setTimeout(() => setEPState('success'), 1800);
+}
+
+// Auto-open on load (production trigger)
+window.addEventListener('load', () => {
+  setTimeout(openEP, 1000);
+});
+</script>
+</body>
+</html>
