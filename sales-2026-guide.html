@@ -93,40 +93,12 @@
     z-index: 2;
   }
 
-  .cover-logo {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-  }
-
-  .cover-logo-mark {
-    width: 32px;
+  .cover-logo img {
     height: 32px;
-    background: var(--orange-grad);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .cover-logo-mark svg {
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
     display: block;
-  }
-
-  .cover-logo-name {
-    color: #fff;
-    font-size: 12pt;
-    font-weight: 700;
-    letter-spacing: -0.2px;
-    line-height: 1.1;
-  }
-
-  .cover-logo-sub {
-    color: rgba(255,255,255,0.45);
-    font-size: 7.5pt;
-    font-weight: 400;
-    letter-spacing: 0.3px;
   }
 
   .cover-year-tag {
@@ -1165,15 +1137,7 @@
 
   <div class="cover-header">
     <div class="cover-logo">
-      <div class="cover-logo-mark">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M3 14L9 4L15 14H3Z" fill="#fff" fill-opacity="0.9"/>
-        </svg>
-      </div>
-      <div>
-        <div class="cover-logo-name">Фактор Продаж</div>
-        <div class="cover-logo-sub">factor-prodazh.ru</div>
-      </div>
+      <img src="https://factor-prodazh.ru/wp-content/themes/faktor-template/common/image/logo-dec.svg" alt="Фактор Продаж">
     </div>
     <div class="cover-year-tag">Гайд&nbsp;2026</div>
   </div>
